@@ -1,0 +1,25 @@
+{
+  "id": 2,
+  "event": "donation.completed",
+  "created": "2025-08-27T15:22:15Z",
+  "environment": "production",
+  "data": {
+    "id": 189,
+    "date": "2025-08-27",
+    "amount": 100.00,
+    "currency": "CHF",
+    "campaign": "Wildhunde Patenschaft",
+    "purpose": "Tierpatenschaft",
+    "donor": {
+      "name": "Max Müller",
+      "address": "Bahnhofstrasse 1",
+      "city": "8001 Zürich",
+      "country": "CH",
+      "email": "max.mueller@example.ch"
+    },
+    "payment": {
+      "method": "visa",
+      "status": "completed"
+    }
+  }
+}
