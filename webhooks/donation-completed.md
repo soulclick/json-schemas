@@ -104,9 +104,12 @@ When the payment method is `invoice`, the `invoice_number` field becomes require
       "donor": {
         "title": "Frau",
         "name": "Jana Dockter",
-        "address": "Jubiläumsstrasse 23",
-        "city": "3005 Bern",
+        "street_name": "Jubiläumsstrasse",
+        "street_number": "23",
+        "city": "Bern",
+        "postal_code": "3005",
         "country": "CH",
+        "language": "de",
         "email": "janadockter@web.de"
       },
       "payment": {
@@ -136,9 +139,13 @@ When the payment method is `invoice`, the `invoice_number` field becomes require
       "purpose": "Tierpatenschaft",
       "donor": {
         "name": "Max Müller",
-        "address": "Bahnhofstrasse 1",
-        "city": "8001 Zürich",
+        "company": "Tech Solutions AG",
+        "street_name": "Bahnhofstrasse",
+        "street_number": "1",
+        "city": "Zürich",
+        "postal_code": "8001",
         "country": "CH",
+        "language": "de",
         "email": "max.mueller@example.ch"
       },
       "payment": {
@@ -169,9 +176,13 @@ When the payment method is `invoice`, the `invoice_number` field becomes require
       "donor": {
         "title": "Herr",
         "name": "Peter Schmidt",
-        "address": "Musterstrasse 42",
-        "city": "4000 Basel",
+        "street_name": "Musterstrasse",
+        "street_number": "42",
+        "po_box": "Postfach 1234",
+        "city": "Basel",
+        "postal_code": "4000",
         "country": "CH",
+        "language": "fr",
         "email": "peter.schmidt@company.ch"
       },
       "payment": {

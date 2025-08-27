@@ -13,9 +13,13 @@
       "purpose": "Tierpatenschaft",
       "donor": {
         "name": "Max Müller",
-        "address": "Bahnhofstrasse 1",
-        "city": "8001 Zürich",
+        "company": "Tech Solutions AG",
+        "street_name": "Bahnhofstrasse",
+        "street_number": "1",
+        "city": "Zürich",
+        "postal_code": "8001",
         "country": "CH",
+        "language": "de",
         "email": "max.mueller@example.ch"
       },
       "payment": {

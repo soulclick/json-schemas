@@ -14,9 +14,12 @@
       "donor": {
         "title": "Frau",
         "name": "Jana Dockter",
-        "address": "Jubiläumsstrasse 23",
-        "city": "3005 Bern",
+        "street_name": "Jubiläumsstrasse",
+        "street_number": "23",
+        "city": "Bern",
+        "postal_code": "3005",
         "country": "CH",
+        "language": "de",
         "email": "janadockter@web.de"
       },
       "payment": {

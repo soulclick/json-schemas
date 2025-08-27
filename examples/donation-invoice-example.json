@@ -14,9 +14,13 @@
       "donor": {
         "title": "Herr",
         "name": "Peter Schmidt",
-        "address": "Musterstrasse 42",
-        "city": "4000 Basel",
+        "street_name": "Musterstrasse",
+        "street_number": "42",
+        "po_box": "Postfach 1234",
+        "city": "Basel",
+        "postal_code": "4000",
         "country": "CH",
+        "language": "fr",
         "email": "peter.schmidt@company.ch"
       },
       "payment": {
