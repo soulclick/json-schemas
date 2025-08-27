@@ -14,11 +14,19 @@ The webhook payload follows a consistent structure with event metadata at the ro
 | `event` | string | Yes | Event type, always `"donation.completed"` |
 | `created_at` | string | Yes | ISO 8601 timestamp when the event was created |
 | `environment` | string | Yes | Environment where the event occurred (`test`, `stage`, `prod`) |
-| `data` | object | Yes | Donation-specific data |
+| `data` | object | Yes | Event data containing donation information |
 
-### Donation Data Properties
+### Event Data Properties
 
-The `data` object contains detailed information about the completed donation:
+The `data` object contains the donation information:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `donation` | object | Yes | Donation details |
+
+### Donation Properties
+
+The `donation` object contains detailed information about the completed donation:
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -81,23 +89,25 @@ When the payment method is `invoice`, the `invoice_number` field becomes require
   "created_at": "2025-08-27T14:04:39Z",
   "environment": "prod",
   "data": {
-    "id": 188,
-    "created_at": "2025-08-25T10:30:00Z",
-    "amount": 51.05,
-    "currency": "CHF",
-    "campaign": "Schule statt Fabrik – Hoffnung statt Ausbeutung",
-    "purpose": "Freie Spende",
-    "donor": {
-      "title": "Frau",
-      "name": "Jana Dockter",
-      "address": "Jubiläumsstrasse 23",
-      "city": "3005 Bern",
-      "country": "CH",
-      "email": "janadockter@web.de"
-    },
-    "payment": {
-      "method": "twint",
-      "status": "completed"
+    "donation": {
+      "id": 188,
+      "created_at": "2025-08-25T10:30:00Z",
+      "amount": 51.05,
+      "currency": "CHF",
+      "campaign": "Schule statt Fabrik – Hoffnung statt Ausbeutung",
+      "purpose": "Freie Spende",
+      "donor": {
+        "title": "Frau",
+        "name": "Jana Dockter",
+        "address": "Jubiläumsstrasse 23",
+        "city": "3005 Bern",
+        "country": "CH",
+        "email": "janadockter@web.de"
+      },
+      "payment": {
+        "method": "twint",
+        "status": "completed"
+      }
     }
   }
 }
@@ -112,22 +122,24 @@ When the payment method is `invoice`, the `invoice_number` field becomes require
   "created_at": "2025-08-27T15:22:15Z",
   "environment": "prod",
   "data": {
-    "id": 189,
-    "created_at": "2025-08-27T09:45:00Z",
-    "amount": 100.00,
-    "currency": "CHF",
-    "campaign": "Wildhunde Patenschaft",
-    "purpose": "Tierpatenschaft",
-    "donor": {
-      "name": "Max Müller",
-      "address": "Bahnhofstrasse 1",
-      "city": "8001 Zürich",
-      "country": "CH",
-      "email": "max.mueller@example.ch"
-    },
-    "payment": {
-      "method": "visa",
-      "status": "completed"
+    "donation": {
+      "id": 189,
+      "created_at": "2025-08-27T09:45:00Z",
+      "amount": 100.00,
+      "currency": "CHF",
+      "campaign": "Wildhunde Patenschaft",
+      "purpose": "Tierpatenschaft",
+      "donor": {
+        "name": "Max Müller",
+        "address": "Bahnhofstrasse 1",
+        "city": "8001 Zürich",
+        "country": "CH",
+        "email": "max.mueller@example.ch"
+      },
+      "payment": {
+        "method": "visa",
+        "status": "completed"
+      }
     }
   }
 }
@@ -142,24 +154,26 @@ When the payment method is `invoice`, the `invoice_number` field becomes require
   "created_at": "2025-08-27T09:15:30Z",
   "environment": "prod",
   "data": {
-    "id": 190,
-    "created_at": "2025-08-27T08:20:00Z",
-    "amount": 250.00,
-    "currency": "CHF",
-    "campaign": "Bildung für alle",
-    "purpose": "Bildungsprojekt",
-    "donor": {
-      "title": "Herr",
-      "name": "Peter Schmidt",
-      "address": "Musterstrasse 42",
-      "city": "4000 Basel",
-      "country": "CH",
-      "email": "peter.schmidt@company.ch"
-    },
-    "payment": {
-      "method": "invoice",
-      "status": "pending",
-      "invoice_number": "INV-2025-001190"
+    "donation": {
+      "id": 190,
+      "created_at": "2025-08-27T08:20:00Z",
+      "amount": 250.00,
+      "currency": "CHF",
+      "campaign": "Bildung für alle",
+      "purpose": "Bildungsprojekt",
+      "donor": {
+        "title": "Herr",
+        "name": "Peter Schmidt",
+        "address": "Musterstrasse 42",
+        "city": "4000 Basel",
+        "country": "CH",
+        "email": "peter.schmidt@company.ch"
+      },
+      "payment": {
+        "method": "invoice",
+        "status": "pending",
+        "invoice_number": "INV-2025-001190"
+      }
     }
   }
 }

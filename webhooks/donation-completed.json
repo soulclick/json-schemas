@@ -26,96 +26,102 @@
     },
     "data": {
       "type": "object",
-      "required": ["id", "created_at", "amount", "currency", "campaign", "purpose", "donor", "payment"],
+      "required": ["donation"],
       "properties": {
-        "id": {
-          "type": "integer",
-          "description": "Unique donation identifier"
-        },
-        "created_at": {
-          "type": "string",
-          "format": "date-time",
-          "description": "ISO 8601 timestamp when donation was created"
-        },
-        "amount": {
-          "type": "number",
-          "minimum": 0,
-          "multipleOf": 0.01,
-          "description": "Donation amount"
-        },
-        "currency": {
-          "type": "string",
-          "pattern": "^[A-Z]{3}$",
-          "description": "ISO 4217 currency code"
-        },
-        "campaign": {
-          "type": "string",
-          "description": "Campaign or product name"
-        },
-        "purpose": {
-          "type": "string",
-          "description": "Donation purpose or category"
-        },
-        "donor": {
+        "donation": {
           "type": "object",
-          "required": ["name", "email"],
+          "required": ["id", "created_at", "amount", "currency", "campaign", "purpose", "donor", "payment"],
           "properties": {
-            "title": {
-              "type": "string",
-              "description": "Donor title (optional)"
+            "id": {
+              "type": "integer",
+              "description": "Unique donation identifier"
             },
-            "name": {
+            "created_at": {
               "type": "string",
-              "minLength": 1,
-              "description": "Donor full name"
+              "format": "date-time",
+              "description": "ISO 8601 timestamp when donation was created"
             },
-            "address": {
-              "type": "string",
-              "description": "Street address (optional)"
+            "amount": {
+              "type": "number",
+              "minimum": 0,
+              "multipleOf": 0.01,
+              "description": "Donation amount"
             },
-            "city": {
+            "currency": {
               "type": "string",
-              "description": "City with postal code (optional)"
+              "pattern": "^[A-Z]{3}$",
+              "description": "ISO 4217 currency code"
             },
-            "country": {
+            "campaign": {
               "type": "string",
-              "pattern": "^[A-Z]{2}$",
-              "description": "ISO 3166-1 alpha-2 country code (optional)"
+              "description": "Campaign or product name"
             },
-            "email": {
+            "purpose": {
               "type": "string",
-              "format": "email",
-              "description": "Donor email address"
-            }
-          }
-        },
-        "payment": {
-          "type": "object",
-          "required": ["method", "status"],
-          "properties": {
-            "method": {
-              "type": "string",
-              "enum": ["twint", "visa", "mastercard", "postfinance", "invoice"],
-              "description": "Payment method used"
+              "description": "Donation purpose or category"
             },
-            "status": {
-              "type": "string",
-              "enum": ["completed", "pending", "failed"],
-              "description": "Payment status"
+            "donor": {
+              "type": "object",
+              "required": ["name", "email"],
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "Donor title (optional)"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Donor full name"
+                },
+                "address": {
+                  "type": "string",
+                  "description": "Street address (optional)"
+                },
+                "city": {
+                  "type": "string",
+                  "description": "City with postal code (optional)"
+                },
+                "country": {
+                  "type": "string",
+                  "pattern": "^[A-Z]{2}$",
+                  "description": "ISO 3166-1 alpha-2 country code (optional)"
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "description": "Donor email address"
+                }
+              }
             },
+            "payment": {
+              "type": "object",
+              "required": ["method", "status"],
+              "properties": {
+                "method": {
+                  "type": "string",
+                  "enum": ["twint", "visa", "mastercard", "postfinance", "invoice"],
+                  "description": "Payment method used"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": ["completed", "pending", "failed"],
+                  "description": "Payment status"
+                },
 
-            "invoice_number": {
-              "type": "string",
-              "description": "Invoice number for invoice payments"
+                "invoice_number": {
+                  "type": "string",
+                  "description": "Invoice number for invoice payments"
+                }
+              },
+              "if": {
+                "properties": {
+                  "method": { "const": "invoice" }
+                }
+              },
+              "then": {
+                "required": ["method", "status", "invoice_number"]
+              }
             }
-          },
-          "if": {
-            "properties": {
-              "method": { "const": "invoice" }
-            }
-          },
-          "then": {
-            "required": ["method", "status", "invoice_number"]
           }
         }
       }
@@ -128,23 +134,25 @@
       "created_at": "2025-08-27T14:04:39Z",
       "environment": "prod",
       "data": {
-        "id": 188,
-        "created_at": "2025-08-25T10:30:00Z",
-        "amount": 51.05,
-        "currency": "CHF",
-        "campaign": "Schule statt Fabrik – Hoffnung statt Ausbeutung",
-        "purpose": "Freie Spende",
-        "donor": {
-          "title": "Frau",
-          "name": "Jana Dockter",
-          "address": "Jubiläumsstrasse 23",
-          "city": "3005 Bern",
-          "country": "CH",
-          "email": "janadockter@web.de"
-        },
-        "payment": {
-          "method": "twint",
-          "status": "completed"
+        "donation": {
+          "id": 188,
+          "created_at": "2025-08-25T10:30:00Z",
+          "amount": 51.05,
+          "currency": "CHF",
+          "campaign": "Schule statt Fabrik – Hoffnung statt Ausbeutung",
+          "purpose": "Freie Spende",
+          "donor": {
+            "title": "Frau",
+            "name": "Jana Dockter",
+            "address": "Jubiläumsstrasse 23",
+            "city": "3005 Bern",
+            "country": "CH",
+            "email": "janadockter@web.de"
+          },
+          "payment": {
+            "method": "twint",
+            "status": "completed"
+          }
         }
       }
     },
@@ -154,22 +162,24 @@
       "created_at": "2025-08-27T15:22:15Z",
       "environment": "prod",
       "data": {
-        "id": 189,
-        "created_at": "2025-08-27T09:45:00Z",
-        "amount": 100.00,
-        "currency": "CHF",
-        "campaign": "Wildhunde Patenschaft",
-        "purpose": "Tierpatenschaft",
-        "donor": {
-          "name": "Max Müller",
-          "address": "Bahnhofstrasse 1",
-          "city": "8001 Zürich",
-          "country": "CH",
-          "email": "max.mueller@example.ch"
-        },
-        "payment": {
-          "method": "visa",
-          "status": "completed"
+        "donation": {
+          "id": 189,
+          "created_at": "2025-08-27T09:45:00Z",
+          "amount": 100.00,
+          "currency": "CHF",
+          "campaign": "Wildhunde Patenschaft",
+          "purpose": "Tierpatenschaft",
+          "donor": {
+            "name": "Max Müller",
+            "address": "Bahnhofstrasse 1",
+            "city": "8001 Zürich",
+            "country": "CH",
+            "email": "max.mueller@example.ch"
+          },
+          "payment": {
+            "method": "visa",
+            "status": "completed"
+          }
         }
       }
     },
@@ -179,24 +189,26 @@
       "created_at": "2025-08-27T09:15:30Z",
       "environment": "prod",
       "data": {
-        "id": 190,
-        "created_at": "2025-08-27T08:20:00Z",
-        "amount": 250.00,
-        "currency": "CHF",
-        "campaign": "Bildung für alle",
-        "purpose": "Bildungsprojekt",
-        "donor": {
-          "title": "Herr",
-          "name": "Peter Schmidt",
-          "address": "Musterstrasse 42",
-          "city": "4000 Basel",
-          "country": "CH",
-          "email": "peter.schmidt@company.ch"
-        },
-        "payment": {
-          "method": "invoice",
-          "status": "pending",
-          "invoice_number": "INV-2025-001190"
+        "donation": {
+          "id": 190,
+          "created_at": "2025-08-27T08:20:00Z",
+          "amount": 250.00,
+          "currency": "CHF",
+          "campaign": "Bildung für alle",
+          "purpose": "Bildungsprojekt",
+          "donor": {
+            "title": "Herr",
+            "name": "Peter Schmidt",
+            "address": "Musterstrasse 42",
+            "city": "4000 Basel",
+            "country": "CH",
+            "email": "peter.schmidt@company.ch"
+          },
+          "payment": {
+            "method": "invoice",
+            "status": "pending",
+            "invoice_number": "INV-2025-001190"
+          }
         }
       }
     }

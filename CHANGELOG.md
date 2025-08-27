@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replaced 'production' with 'prod' in schema and examples
 - Added 'test' environment to enum
 
+### Changed
+- Wrapped donation data in `donation` object within `event.data`
+- Updated schema structure from `event.data.*` to `event.data.donation.*`
+
 ### Removed
 - Removed 'bank_transfer' from payment methods enum
 
