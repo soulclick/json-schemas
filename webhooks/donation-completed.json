@@ -73,9 +73,21 @@
                   "minLength": 1,
                   "description": "Donor full name"
                 },
-                "address": {
+                "company": {
                   "type": "string",
-                  "description": "Street address (optional)"
+                  "description": "Company name (optional)"
+                },
+                "street_name": {
+                  "type": "string",
+                  "description": "Street name (optional)"
+                },
+                "street_number": {
+                  "type": "string",
+                  "description": "Street number (optional)"
+                },
+                "po_box": {
+                  "type": "string",
+                  "description": "PO Box (optional)"
                 },
                 "city": {
                   "type": "string",
