@@ -1,0 +1,26 @@
+{
+  "id": 1,
+  "event": "donation.completed",
+  "created": "2025-08-27T14:04:39Z",
+  "environment": "production",
+  "data": {
+    "id": 188,
+    "date": "2025-08-25",
+    "amount": 51.05,
+    "currency": "CHF",
+    "campaign": "Schule statt Fabrik – Hoffnung statt Ausbeutung",
+    "purpose": "Freie Spende",
+    "donor": {
+      "title": "Frau",
+      "name": "Jana Dockter",
+      "address": "Jubiläumsstrasse 23",
+      "city": "3005 Bern",
+      "country": "CH",
+      "email": "janadockter@web.de"
+    },
+    "payment": {
+      "method": "twint",
+      "status": "completed"
+    }
+  }
+}
