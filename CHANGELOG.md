@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Comprehensive webhook documentation for donation.completed event
+
+### Changed
+- Updated environment naming to use short forms (test, stage, prod)
+- Replaced 'production' with 'prod' in schema and examples
+- Added 'test' environment to enum
+
 ## [1.0.1] - 2025-08-27
 
 ### Changed
