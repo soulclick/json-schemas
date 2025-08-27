@@ -59,7 +59,6 @@ The following payment methods are supported:
 - `mastercard` - Mastercard credit card
 - `postfinance` - PostFinance payment
 - `invoice` - Invoice payment
-- `bank_transfer` - Bank transfer
 
 #### Payment Status
 

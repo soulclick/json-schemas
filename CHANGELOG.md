@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replaced 'production' with 'prod' in schema and examples
 - Added 'test' environment to enum
 
+### Removed
+- Removed 'bank_transfer' from payment methods enum
+
 ## [1.0.1] - 2025-08-27
 
 ### Changed

@@ -95,7 +95,7 @@
           "properties": {
             "method": {
               "type": "string",
-              "enum": ["twint", "visa", "mastercard", "postfinance", "invoice", "bank_transfer"],
+              "enum": ["twint", "visa", "mastercard", "postfinance", "invoice"],
               "description": "Payment method used"
             },
             "status": {
