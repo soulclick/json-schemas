@@ -45,13 +45,14 @@ The `donation` object contains detailed information about the completed donation
 |-------|------|----------|-------------|
 | `name` | string | Yes | Donor full name (minimum 1 character) |
 | `email` | string | Yes | Donor email address (valid email format) |
+| `street_name` | string | Yes | Street name |
+| `street_number` | string | Yes | Street number |
+| `city` | string | Yes | City |
+| `postal_code` | string | Yes | Postal code |
+| `country` | string | Yes | ISO 3166-1 alpha-2 country code (2 uppercase letters) |
 | `title` | string | No | Donor title (e.g., "Herr", "Frau") |
 | `company` | string | No | Company name |
-| `street_name` | string | No | Street name |
-| `street_number` | string | No | Street number |
 | `po_box` | string | No | PO Box |
-| `city` | string | No | City with postal code |
-| `country` | string | No | ISO 3166-1 alpha-2 country code (2 uppercase letters) |
 
 ### Payment Information
 

@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Wrapped donation data in `donation` object within `event.data`
 - Updated schema structure from `event.data.*` to `event.data.donation.*`
 - Replaced single `address` field with separate `street_name` and `street_number` fields
+- Made address fields required: `street_name`, `street_number`, `city`, `postal_code`, `country`
+- Separated `city` and `postal_code` into distinct fields
 
 ### Removed
 - Removed 'bank_transfer' from payment methods enum

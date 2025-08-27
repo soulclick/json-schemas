@@ -62,7 +62,7 @@
             },
             "donor": {
               "type": "object",
-              "required": ["name", "email"],
+              "required": ["name", "email", "street_name", "street_number", "city", "postal_code", "country"],
               "properties": {
                 "title": {
                   "type": "string",
@@ -79,11 +79,11 @@
                 },
                 "street_name": {
                   "type": "string",
-                  "description": "Street name (optional)"
+                  "description": "Street name"
                 },
                 "street_number": {
                   "type": "string",
-                  "description": "Street number (optional)"
+                  "description": "Street number"
                 },
                 "po_box": {
                   "type": "string",
@@ -91,12 +91,16 @@
                 },
                 "city": {
                   "type": "string",
-                  "description": "City with postal code (optional)"
+                  "description": "City"
+                },
+                "postal_code": {
+                  "type": "string",
+                  "description": "Postal code"
                 },
                 "country": {
                   "type": "string",
                   "pattern": "^[A-Z]{2}$",
-                  "description": "ISO 3166-1 alpha-2 country code (optional)"
+                  "description": "ISO 3166-1 alpha-2 country code"
                 },
                 "email": {
                   "type": "string",
