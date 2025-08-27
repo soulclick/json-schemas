@@ -50,6 +50,7 @@ The `donation` object contains detailed information about the completed donation
 | `city` | string | Yes | City |
 | `postal_code` | string | Yes | Postal code |
 | `country` | string | Yes | ISO 3166-1 alpha-2 country code (2 uppercase letters) |
+| `language` | string | Yes | Donor's preferred language (ISO 639-1 language code, 2 lowercase letters) |
 | `title` | string | No | Donor title (e.g., "Herr", "Frau") |
 | `company` | string | No | Company name |
 | `po_box` | string | No | PO Box |

@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added `company` field to donor object for company donations
 - Added structured address fields: `street_name`, `street_number`, `po_box`
+- Added `language` field to donor object for preferred language (required)
 
 ### Changed
 - Wrapped donation data in `donation` object within `event.data`
