@@ -1,11 +1,11 @@
 {
   "id": 3,
   "event": "donation.completed",
-  "created": "2025-08-27T09:15:30Z",
+  "created_at": "2025-08-27T09:15:30Z",
   "environment": "production",
   "data": {
     "id": 190,
-    "date": "2025-08-27",
+    "created_at": "2025-08-27T08:20:00Z",
     "amount": 250.00,
     "currency": "CHF",
     "campaign": "Bildung für alle",

@@ -1,11 +1,11 @@
 {
   "id": 2,
   "event": "donation.completed",
-  "created": "2025-08-27T15:22:15Z",
+  "created_at": "2025-08-27T15:22:15Z",
   "environment": "production",
   "data": {
     "id": 189,
-    "date": "2025-08-27",
+    "created_at": "2025-08-27T09:45:00Z",
     "amount": 100.00,
     "currency": "CHF",
     "campaign": "Wildhunde Patenschaft",

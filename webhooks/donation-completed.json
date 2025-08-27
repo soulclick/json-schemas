@@ -3,7 +3,7 @@
   "type": "object",
   "title": "Donation Completed Event",
   "description": "Schema for donation.completed webhook events",
-  "required": ["id", "event", "created", "environment", "data"],
+  "required": ["id", "event", "created_at", "environment", "data"],
   "properties": {
     "id": {
       "type": "integer",
@@ -14,7 +14,7 @@
       "enum": ["donation.completed"],
       "description": "Event type"
     },
-    "created": {
+    "created_at": {
       "type": "string",
       "format": "date-time",
       "description": "ISO 8601 timestamp when event was created"
@@ -26,16 +26,16 @@
     },
     "data": {
       "type": "object",
-      "required": ["id", "date", "amount", "currency", "campaign", "purpose", "donor", "payment"],
+      "required": ["id", "created_at", "amount", "currency", "campaign", "purpose", "donor", "payment"],
       "properties": {
         "id": {
           "type": "integer",
           "description": "Unique donation identifier"
         },
-        "date": {
+        "created_at": {
           "type": "string",
-          "format": "date",
-          "description": "Donation date (YYYY-MM-DD)"
+          "format": "date-time",
+          "description": "ISO 8601 timestamp when donation was created"
         },
         "amount": {
           "type": "number",
@@ -127,11 +127,11 @@
       "value": {
         "id": 1,
         "event": "donation.completed",
-        "created": "2025-08-27T14:04:39Z",
+        "created_at": "2025-08-27T14:04:39Z",
         "environment": "production",
         "data": {
           "id": 188,
-          "date": "2025-08-25",
+          "created_at": "2025-08-25T10:30:00Z",
           "amount": 51.05,
           "currency": "CHF",
           "campaign": "Schule statt Fabrik – Hoffnung statt Ausbeutung",
@@ -156,11 +156,11 @@
       "value": {
         "id": 2,
         "event": "donation.completed",
-        "created": "2025-08-27T15:22:15Z",
+        "created_at": "2025-08-27T15:22:15Z",
         "environment": "production",
         "data": {
           "id": 189,
-          "date": "2025-08-27",
+          "created_at": "2025-08-27T09:45:00Z",
           "amount": 100.00,
           "currency": "CHF",
           "campaign": "Wildhunde Patenschaft",
@@ -184,11 +184,11 @@
       "value": {
         "id": 3,
         "event": "donation.completed",
-        "created": "2025-08-27T09:15:30Z",
+        "created_at": "2025-08-27T09:15:30Z",
         "environment": "production",
         "data": {
           "id": 190,
-          "date": "2025-08-27",
+          "created_at": "2025-08-27T08:20:00Z",
           "amount": 250.00,
           "currency": "CHF",
           "campaign": "Bildung für alle",
