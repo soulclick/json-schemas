@@ -1,0 +1,213 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Donation Completed Event",
+  "description": "Schema for donation.completed webhook events",
+  "required": ["id", "event", "created", "environment", "data"],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique event identifier"
+    },
+    "event": {
+      "type": "string",
+      "enum": ["donation.completed"],
+      "description": "Event type"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when event was created"
+    },
+    "environment": {
+      "type": "string",
+      "enum": ["stage", "production"],
+      "description": "Environment where event occurred"
+    },
+    "data": {
+      "type": "object",
+      "required": ["id", "date", "amount", "currency", "campaign", "purpose", "donor", "payment"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Unique donation identifier"
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "Donation date (YYYY-MM-DD)"
+        },
+        "amount": {
+          "type": "number",
+          "minimum": 0,
+          "multipleOf": 0.01,
+          "description": "Donation amount"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$",
+          "description": "ISO 4217 currency code"
+        },
+        "campaign": {
+          "type": "string",
+          "description": "Campaign or product name"
+        },
+        "purpose": {
+          "type": "string",
+          "description": "Donation purpose or category"
+        },
+        "donor": {
+          "type": "object",
+          "required": ["name", "email"],
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "Donor title (optional)"
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Donor full name"
+            },
+            "address": {
+              "type": "string",
+              "description": "Street address (optional)"
+            },
+            "city": {
+              "type": "string",
+              "description": "City with postal code (optional)"
+            },
+            "country": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}$",
+              "description": "ISO 3166-1 alpha-2 country code (optional)"
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "description": "Donor email address"
+            }
+          }
+        },
+        "payment": {
+          "type": "object",
+          "required": ["method", "status"],
+          "properties": {
+            "method": {
+              "type": "string",
+              "enum": ["twint", "visa", "mastercard", "postfinance", "invoice", "bank_transfer"],
+              "description": "Payment method used"
+            },
+            "status": {
+              "type": "string",
+              "enum": ["completed", "pending", "failed"],
+              "description": "Payment status"
+            },
+
+            "invoice_number": {
+              "type": "string",
+              "description": "Invoice number for invoice payments"
+            }
+          },
+          "if": {
+            "properties": {
+              "method": { "const": "invoice" }
+            }
+          },
+          "then": {
+            "required": ["method", "status", "invoice_number"]
+          }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "title": "TWINT Payment",
+      "value": {
+        "id": 1,
+        "event": "donation.completed",
+        "created": "2025-08-27T14:04:39Z",
+        "environment": "production",
+        "data": {
+          "id": 188,
+          "date": "2025-08-25",
+          "amount": 51.05,
+          "currency": "CHF",
+          "campaign": "Schule statt Fabrik – Hoffnung statt Ausbeutung",
+          "purpose": "Freie Spende",
+          "donor": {
+            "title": "Frau",
+            "name": "Jana Dockter",
+            "address": "Jubiläumsstrasse 23",
+            "city": "3005 Bern",
+            "country": "CH",
+            "email": "janadockter@web.de"
+          },
+          "payment": {
+            "method": "twint",
+            "status": "completed"
+          }
+        }
+      }
+    },
+    {
+      "title": "Visa Payment",
+      "value": {
+        "id": 2,
+        "event": "donation.completed",
+        "created": "2025-08-27T15:22:15Z",
+        "environment": "production",
+        "data": {
+          "id": 189,
+          "date": "2025-08-27",
+          "amount": 100.00,
+          "currency": "CHF",
+          "campaign": "Wildhunde Patenschaft",
+          "purpose": "Tierpatenschaft",
+          "donor": {
+            "name": "Max Müller",
+            "address": "Bahnhofstrasse 1",
+            "city": "8001 Zürich",
+            "country": "CH",
+            "email": "max.mueller@example.ch"
+          },
+          "payment": {
+            "method": "visa",
+            "status": "completed"
+          }
+        }
+      }
+    },
+    {
+      "title": "Invoice Payment",
+      "value": {
+        "id": 3,
+        "event": "donation.completed",
+        "created": "2025-08-27T09:15:30Z",
+        "environment": "production",
+        "data": {
+          "id": 190,
+          "date": "2025-08-27",
+          "amount": 250.00,
+          "currency": "CHF",
+          "campaign": "Bildung für alle",
+          "purpose": "Bildungsprojekt",
+          "donor": {
+            "title": "Herr",
+            "name": "Peter Schmidt",
+            "address": "Musterstrasse 42",
+            "city": "4000 Basel",
+            "country": "CH",
+            "email": "peter.schmidt@company.ch"
+          },
+          "payment": {
+            "method": "invoice",
+            "status": "pending",
+            "invoice_number": "INV-2025-001190"
+          }
+        }
+      }
+    }
+  ]
+}
