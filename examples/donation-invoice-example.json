@@ -1,0 +1,27 @@
+{
+  "id": 3,
+  "event": "donation.completed",
+  "created": "2025-08-27T09:15:30Z",
+  "environment": "production",
+  "data": {
+    "id": 190,
+    "date": "2025-08-27",
+    "amount": 250.00,
+    "currency": "CHF",
+    "campaign": "Bildung für alle",
+    "purpose": "Bildungsprojekt",
+    "donor": {
+      "title": "Herr",
+      "name": "Peter Schmidt",
+      "address": "Musterstrasse 42",
+      "city": "4000 Basel",
+      "country": "CH",
+      "email": "peter.schmidt@company.ch"
+    },
+    "payment": {
+      "method": "invoice",
+      "status": "pending",
+      "invoice_number": "INV-2025-001190"
+    }
+  }
+}
