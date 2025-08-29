@@ -60,10 +60,6 @@
               "type": "string",
               "description": "Donation purpose or category"
             },
-            "invoice": {
-              "type": "string",
-              "description": "Invoice number (null for non-invoice payments)"
-            },
             "donor": {
               "type": "object",
               "required": ["first_name", "last_name", "email", "street_name", "street_number", "city", "postal_code", "country", "language"],
@@ -138,6 +134,10 @@
                   "description": "Payment status"
                 }
               }
+            },
+            "invoice": {
+              "type": "string",
+              "description": "Invoice number (null for non-invoice payments)"
             }
           }
         }
@@ -158,7 +158,6 @@
           "currency": "CHF",
           "campaign": "Schule statt Fabrik – Hoffnung statt Ausbeutung",
           "purpose": "Freie Spende",
-          "invoice": null,
           "donor": {
             "title": "Frau",
             "first_name": "Jana",
@@ -174,7 +173,8 @@
           "payment": {
             "method": "twint",
             "status": "completed"
-          }
+          },
+          "invoice": null
         }
       }
     },
@@ -191,7 +191,6 @@
           "currency": "CHF",
           "campaign": "Wildhunde Patenschaft",
           "purpose": "Tierpatenschaft",
-          "invoice": null,
           "donor": {
             "first_name": "Max",
             "last_name": "Müller",
@@ -207,7 +206,8 @@
           "payment": {
             "method": "visa",
             "status": "completed"
-          }
+          },
+          "invoice": null
         }
       }
     },
@@ -224,7 +224,6 @@
           "currency": "CHF",
           "campaign": "Bildung für alle",
           "purpose": "Bildungsprojekt",
-          "invoice": "INV-2025-001190",
           "donor": {
             "title": "Herr",
             "first_name": "Peter",
@@ -241,7 +240,8 @@
           "payment": {
             "method": "invoice",
             "status": "pending"
-          }
+          },
+          "invoice": "INV-2025-001190"
         }
       }
     }
