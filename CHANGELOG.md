@@ -32,6 +32,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed shop order ID from integer to string (order number)
 - Updated shop order amount fields: `total_price` → `amount_total`, `vat_price` → `amount_tax`
 - Updated shop order item fields to use Stripe-like naming: `product_name` → `description`, `unit_price` → `unit_amount`, `total_price` → `amount_total`
+- Flattened shipping structure: replaced nested `shipment` object with flat `shipping_method` and `shipping_cost` fields
+- Reordered order fields for logical flow: metadata → customer → items → addresses → financial summary → transaction details
+- Updated shop order payment object to match donation schema with required `status` field
+- Removed `payment.transaction_id` field from shop order schema
+- Made address fields properly required: `street`, `street_number`, `postal_code`, `city`, `country`
+- Added `amount_subtotal` field to order for financial transparency
 
 ### Removed
 - Removed 'bank_transfer' from payment methods enum

@@ -30,7 +30,16 @@
       "properties": {
         "donation": {
           "type": "object",
-          "required": ["id", "created_at", "amount", "currency", "campaign", "purpose", "donor", "payment"],
+          "required": [
+            "id",
+            "created_at",
+            "amount",
+            "currency",
+            "campaign",
+            "purpose",
+            "donor",
+            "payment"
+          ],
           "properties": {
             "id": {
               "type": "integer",
@@ -62,7 +71,17 @@
             },
             "donor": {
               "type": "object",
-              "required": ["first_name", "last_name", "email", "street_name", "street_number", "city", "postal_code", "country", "language"],
+              "required": [
+                "first_name",
+                "last_name",
+                "email",
+                "street",
+                "street_number",
+                "city",
+                "postal_code",
+                "country",
+                "language"
+              ],
               "properties": {
                 "title": {
                   "type": "string",
@@ -82,7 +101,7 @@
                   "type": "string",
                   "description": "Company name (optional)"
                 },
-                "street_name": {
+                "street": {
                   "type": "string",
                   "description": "Street name"
                 },
@@ -125,7 +144,13 @@
               "properties": {
                 "method": {
                   "type": "string",
-                  "enum": ["twint", "visa", "mastercard", "postfinance", "invoice"],
+                  "enum": [
+                    "twint",
+                    "visa",
+                    "mastercard",
+                    "postfinance",
+                    "invoice"
+                  ],
                   "description": "Payment method used"
                 },
                 "status": {
@@ -162,7 +187,7 @@
             "title": "Frau",
             "first_name": "Jana",
             "last_name": "Dockter",
-            "street_name": "Jubiläumsstrasse",
+            "street": "Jubiläumsstrasse",
             "street_number": "23",
             "city": "Bern",
             "postal_code": "3005",
@@ -187,7 +212,7 @@
         "donation": {
           "id": 189,
           "created_at": "2025-08-27T09:45:00Z",
-          "amount": 100.00,
+          "amount": 100.0,
           "currency": "CHF",
           "campaign": "Wildhunde Patenschaft",
           "purpose": "Tierpatenschaft",
@@ -195,7 +220,7 @@
             "first_name": "Max",
             "last_name": "Müller",
             "company": "Tech Solutions AG",
-            "street_name": "Bahnhofstrasse",
+            "street": "Bahnhofstrasse",
             "street_number": "1",
             "city": "Zürich",
             "postal_code": "8001",
@@ -220,7 +245,7 @@
         "donation": {
           "id": 190,
           "created_at": "2025-08-27T08:20:00Z",
-          "amount": 250.00,
+          "amount": 250.0,
           "currency": "CHF",
           "campaign": "Bildung für alle",
           "purpose": "Bildungsprojekt",
@@ -228,7 +253,7 @@
             "title": "Herr",
             "first_name": "Peter",
             "last_name": "Schmidt",
-            "street_name": "Musterstrasse",
+            "street": "Musterstrasse",
             "street_number": "42",
             "po_box": "Postfach 1234",
             "city": "Basel",

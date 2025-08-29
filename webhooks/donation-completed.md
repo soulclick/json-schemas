@@ -8,61 +8,61 @@ The webhook payload follows a consistent structure with event metadata at the ro
 
 ### Root Properties
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | integer | Yes | Unique event identifier |
-| `event` | string | Yes | Event type, always `"donation.completed"` |
-| `created_at` | string | Yes | ISO 8601 timestamp when the event was created |
-| `environment` | string | Yes | Environment where the event occurred (`test`, `stage`, `prod`) |
-| `data` | object | Yes | Event data containing donation information |
+| Field         | Type    | Required | Description                                                    |
+| ------------- | ------- | -------- | -------------------------------------------------------------- |
+| `id`          | integer | Yes      | Unique event identifier                                        |
+| `event`       | string  | Yes      | Event type, always `"donation.completed"`                      |
+| `created_at`  | string  | Yes      | ISO 8601 timestamp when the event was created                  |
+| `environment` | string  | Yes      | Environment where the event occurred (`test`, `stage`, `prod`) |
+| `data`        | object  | Yes      | Event data containing donation information                     |
 
 ### Event Data Properties
 
 The `data` object contains the donation information:
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `donation` | object | Yes | Donation details |
+| Field      | Type   | Required | Description      |
+| ---------- | ------ | -------- | ---------------- |
+| `donation` | object | Yes      | Donation details |
 
 ### Donation Properties
 
 The `donation` object contains detailed information about the completed donation:
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | integer | Yes | Unique donation identifier |
-| `created_at` | string | Yes | ISO 8601 timestamp when the donation was created |
-| `amount` | number | Yes | Donation amount (minimum 0, multiple of 0.01) |
-| `currency` | string | Yes | ISO 4217 currency code (3 uppercase letters) |
-| `campaign` | string | Yes | Campaign or product name |
-| `purpose` | string | Yes | Donation purpose or category |
-| `donor` | object | Yes | Donor information |
-| `payment` | object | Yes | Payment information |
-| `invoice` | string | No | Invoice number (null for non-invoice payments) |
+| Field        | Type    | Required | Description                                      |
+| ------------ | ------- | -------- | ------------------------------------------------ |
+| `id`         | integer | Yes      | Unique donation identifier                       |
+| `created_at` | string  | Yes      | ISO 8601 timestamp when the donation was created |
+| `amount`     | number  | Yes      | Donation amount (minimum 0, multiple of 0.01)    |
+| `currency`   | string  | Yes      | ISO 4217 currency code (3 uppercase letters)     |
+| `campaign`   | string  | Yes      | Campaign or product name                         |
+| `purpose`    | string  | Yes      | Donation purpose or category                     |
+| `donor`      | object  | Yes      | Donor information                                |
+| `payment`    | object  | Yes      | Payment information                              |
+| `invoice`    | string  | No       | Invoice number (null for non-invoice payments)   |
 
 ### Donor Information
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `first_name` | string | Yes | Donor first name (minimum 1 character) |
-| `last_name` | string | Yes | Donor last name (minimum 1 character) |
-| `email` | string | Yes | Donor email address (valid email format) |
-| `street_name` | string | Yes | Street name |
-| `street_number` | string | Yes | Street number |
-| `city` | string | Yes | City |
-| `postal_code` | string | Yes | Postal code |
-| `country` | string | Yes | ISO 3166-1 alpha-2 country code (2 uppercase letters) |
-| `language` | string | Yes | Donor's preferred language (ISO 639-1 language code, 2 lowercase letters) |
-| `title` | string | No | Donor title (e.g., "Herr", "Frau") |
-| `company` | string | No | Company name |
-| `po_box` | string | No | PO Box |
+| Field           | Type   | Required | Description                                                               |
+| --------------- | ------ | -------- | ------------------------------------------------------------------------- |
+| `first_name`    | string | Yes      | Donor first name (minimum 1 character)                                    |
+| `last_name`     | string | Yes      | Donor last name (minimum 1 character)                                     |
+| `email`         | string | Yes      | Donor email address (valid email format)                                  |
+| `street_name`   | string | Yes      | Street name                                                               |
+| `street_number` | string | Yes      | Street number                                                             |
+| `city`          | string | Yes      | City                                                                      |
+| `postal_code`   | string | Yes      | Postal code                                                               |
+| `country`       | string | Yes      | ISO 3166-1 alpha-2 country code (2 uppercase letters)                     |
+| `language`      | string | Yes      | Donor's preferred language (ISO 639-1 language code, 2 lowercase letters) |
+| `title`         | string | No       | Donor title (e.g., "Herr", "Frau")                                        |
+| `company`       | string | No       | Company name                                                              |
+| `po_box`        | string | No       | PO Box                                                                    |
 
 ### Payment Information
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `method` | string | Yes | Payment method used |
-| `status` | string | Yes | Payment status |
+| Field    | Type   | Required | Description         |
+| -------- | ------ | -------- | ------------------- |
+| `method` | string | Yes      | Payment method used |
+| `status` | string | Yes      | Payment status      |
 
 #### Payment Methods
 
@@ -79,7 +79,6 @@ The following payment methods are supported:
 - `completed` - Payment has been successfully processed
 - `pending` - Payment is being processed
 - `failed` - Payment processing failed
-
 
 ## Example Payloads
 
@@ -133,7 +132,7 @@ The following payment methods are supported:
     "donation": {
       "id": 189,
       "created_at": "2025-08-27T09:45:00Z",
-      "amount": 100.00,
+      "amount": 100.0,
       "currency": "CHF",
       "campaign": "Wildhunde Patenschaft",
       "purpose": "Tierpatenschaft",
@@ -171,7 +170,7 @@ The following payment methods are supported:
     "donation": {
       "id": 190,
       "created_at": "2025-08-27T08:20:00Z",
-      "amount": 250.00,
+      "amount": 250.0,
       "currency": "CHF",
       "campaign": "Bildung für alle",
       "purpose": "Bildungsprojekt",

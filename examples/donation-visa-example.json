@@ -7,7 +7,7 @@
     "donation": {
       "id": 189,
       "created_at": "2025-08-27T09:45:00Z",
-      "amount": 100.00,
+      "amount": 100.0,
       "currency": "CHF",
       "campaign": "Wildhunde Patenschaft",
       "purpose": "Tierpatenschaft",
