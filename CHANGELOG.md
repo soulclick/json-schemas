@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `company` field to donor object for company donations
 - Added structured address fields: `street_name`, `street_number`, `po_box`
 - Added `language` field to donor object for preferred language (required)
-- Added `invoice_number` field to donation object for invoice tracking
+- Added `invoice` field to donation object for invoice tracking
 
 ### Changed
 - Updated environment naming to use short forms (test, stage, prod)
@@ -24,12 +24,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Made address fields required: `street_name`, `street_number`, `city`, `postal_code`, `country`
 - Separated `city` and `postal_code` into distinct fields
 - Split donor `name` field into separate `first_name` and `last_name` fields
-- Moved `invoice_number` from payment object to donation level
+- Moved `invoice` from payment object to donation level
 - Simplified payment object to only contain `method` and `status`
 
 ### Removed
 - Removed 'bank_transfer' from payment methods enum
-- Removed conditional validation for `invoice_number` in payment object
+- Removed conditional validation for `invoice` in payment object
 
 ## [1.0.1] - 2025-08-27
 

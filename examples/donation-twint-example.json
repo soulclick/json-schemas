@@ -11,7 +11,7 @@
       "currency": "CHF",
       "campaign": "Schule statt Fabrik – Hoffnung statt Ausbeutung",
       "purpose": "Freie Spende",
-      "invoice_number": null,
+      "invoice": null,
       "donor": {
         "title": "Frau",
         "first_name": "Jana",

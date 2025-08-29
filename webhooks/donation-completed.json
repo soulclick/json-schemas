@@ -60,7 +60,7 @@
               "type": "string",
               "description": "Donation purpose or category"
             },
-            "invoice_number": {
+            "invoice": {
               "type": "string",
               "description": "Invoice number (null for non-invoice payments)"
             },
@@ -158,7 +158,7 @@
           "currency": "CHF",
           "campaign": "Schule statt Fabrik – Hoffnung statt Ausbeutung",
           "purpose": "Freie Spende",
-          "invoice_number": null,
+          "invoice": null,
           "donor": {
             "title": "Frau",
             "first_name": "Jana",
@@ -191,7 +191,7 @@
           "currency": "CHF",
           "campaign": "Wildhunde Patenschaft",
           "purpose": "Tierpatenschaft",
-          "invoice_number": null,
+          "invoice": null,
           "donor": {
             "first_name": "Max",
             "last_name": "Müller",
@@ -224,7 +224,7 @@
           "currency": "CHF",
           "campaign": "Bildung für alle",
           "purpose": "Bildungsprojekt",
-          "invoice_number": "INV-2025-001190",
+          "invoice": "INV-2025-001190",
           "donor": {
             "title": "Herr",
             "first_name": "Peter",

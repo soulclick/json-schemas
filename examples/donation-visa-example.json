@@ -11,7 +11,7 @@
       "currency": "CHF",
       "campaign": "Wildhunde Patenschaft",
       "purpose": "Tierpatenschaft",
-      "invoice_number": null,
+      "invoice": null,
       "donor": {
         "first_name": "Max",
         "last_name": "Müller",

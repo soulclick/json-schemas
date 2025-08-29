@@ -36,7 +36,7 @@ The `donation` object contains detailed information about the completed donation
 | `currency` | string | Yes | ISO 4217 currency code (3 uppercase letters) |
 | `campaign` | string | Yes | Campaign or product name |
 | `purpose` | string | Yes | Donation purpose or category |
-| `invoice_number` | string | No | Invoice number (null for non-invoice payments) |
+| `invoice` | string | No | Invoice number (null for non-invoice payments) |
 | `donor` | object | Yes | Donor information |
 | `payment` | object | Yes | Payment information |
 
@@ -99,7 +99,7 @@ The following payment methods are supported:
       "currency": "CHF",
       "campaign": "Schule statt Fabrik – Hoffnung statt Ausbeutung",
       "purpose": "Freie Spende",
-      "invoice_number": null,
+      "invoice": null,
       "donor": {
         "title": "Frau",
         "first_name": "Jana",
@@ -137,7 +137,7 @@ The following payment methods are supported:
       "currency": "CHF",
       "campaign": "Wildhunde Patenschaft",
       "purpose": "Tierpatenschaft",
-      "invoice_number": null,
+      "invoice": null,
       "donor": {
         "first_name": "Max",
         "last_name": "Müller",
@@ -175,7 +175,7 @@ The following payment methods are supported:
       "currency": "CHF",
       "campaign": "Bildung für alle",
       "purpose": "Bildungsprojekt",
-      "invoice_number": "INV-2025-001190",
+      "invoice": "INV-2025-001190",
       "donor": {
         "title": "Herr",
         "first_name": "Peter",

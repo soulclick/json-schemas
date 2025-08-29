@@ -11,7 +11,7 @@
       "currency": "CHF",
       "campaign": "Bildung für alle",
       "purpose": "Bildungsprojekt",
-      "invoice_number": "INV-2025-001190",
+      "invoice": "INV-2025-001190",
       "donor": {
         "title": "Herr",
         "first_name": "Peter",
