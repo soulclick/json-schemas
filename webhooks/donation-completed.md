@@ -47,7 +47,7 @@ The `donation` object contains detailed information about the completed donation
 | `first_name`    | string | Yes      | Donor first name (minimum 1 character)                                    |
 | `last_name`     | string | Yes      | Donor last name (minimum 1 character)                                     |
 | `email`         | string | Yes      | Donor email address (valid email format)                                  |
-| `street_name`   | string | Yes      | Street name                                                               |
+| `street`        | string | Yes      | Street name                                                               |
 | `street_number` | string | Yes      | Street number                                                             |
 | `city`          | string | Yes      | City                                                                      |
 | `postal_code`   | string | Yes      | Postal code                                                               |
@@ -102,7 +102,7 @@ The following payment methods are supported:
         "title": "Frau",
         "first_name": "Jana",
         "last_name": "Dockter",
-        "street_name": "Jubiläumsstrasse",
+        "street": "Jubiläumsstrasse",
         "street_number": "23",
         "city": "Bern",
         "postal_code": "3005",
@@ -140,7 +140,7 @@ The following payment methods are supported:
         "first_name": "Max",
         "last_name": "Müller",
         "company": "Tech Solutions AG",
-        "street_name": "Bahnhofstrasse",
+        "street": "Bahnhofstrasse",
         "street_number": "1",
         "city": "Zürich",
         "postal_code": "8001",
@@ -178,7 +178,7 @@ The following payment methods are supported:
         "title": "Herr",
         "first_name": "Peter",
         "last_name": "Schmidt",
-        "street_name": "Musterstrasse",
+        "street": "Musterstrasse",
         "street_number": "42",
         "po_box": "Postfach 1234",
         "city": "Basel",

@@ -272,7 +272,7 @@
               "properties": {
                 "method": {
                   "type": "string",
-                  "enum": ["twint", "visa", "mastercard", "paypal", "invoice"],
+                  "enum": ["twint", "visa", "mastercard", "postfinance", "invoice"],
                   "description": "Payment method used"
                 },
                 "status": {

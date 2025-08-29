@@ -1,0 +1,65 @@
+{
+  "id": 2,
+  "event": "shop_order.completed",
+  "created_at": "2025-08-29T15:22:15Z",
+  "environment": "prod",
+  "data": {
+    "order": {
+      "id": "2708202500002",
+      "created_at": "2025-08-27T16:37:20Z",
+      "customer": {
+        "type": "registered",
+        "email": "sanela.zeba@kath-berneck.ch",
+        "language": "de"
+      },
+      "items": [
+        {
+          "product_id": 45,
+          "description": "Sample Product",
+          "article_number": "9104",
+          "quantity": 1,
+          "unit_amount": 0.0,
+          "amount_total": 0.0
+        }
+      ],
+      "delivery_address": {
+        "title": "Frau",
+        "first_name": "",
+        "last_name": "",
+        "company_name": "Sanela Zeba",
+        "care_of": "",
+        "department": "",
+        "street": "Büntstrasse",
+        "street_number": "4",
+        "po_box": "",
+        "postal_code": "9442",
+        "city": "Berneck",
+        "country": "CH"
+      },
+      "invoice_address": {
+        "title": "Frau",
+        "first_name": "",
+        "last_name": "",
+        "company_name": "Sanela Zeba",
+        "care_of": "",
+        "department": "",
+        "street": "Büntstrasse",
+        "street_number": "4",
+        "po_box": "",
+        "postal_code": "9442",
+        "city": "Berneck",
+        "country": "CH"
+      },
+      "currency": "CHF",
+      "amount_subtotal": 0.0,
+      "amount_tax": 0.0,
+      "amount_total": 0.0,
+      "payment": {
+        "method": "invoice",
+        "status": "pending"
+      },
+      "shipping_method": "Service-Pauschale B-Post Paket",
+      "shipping_cost": 0.0
+    }
+  }
+}

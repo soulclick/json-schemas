@@ -1,0 +1,73 @@
+{
+  "id": 1,
+  "event": "shop_order.completed",
+  "created_at": "2025-08-29T14:04:39Z",
+  "environment": "prod",
+  "data": {
+    "order": {
+      "id": "2708202500000",
+      "created_at": "2025-08-27T13:17:47Z",
+      "customer": {
+        "type": "guest",
+        "email": "myriam.udry@gmail.com",
+        "language": "fr"
+      },
+      "items": [
+        {
+          "product_id": 86,
+          "description": "Kleber \"Rund um die Welt\"",
+          "article_number": "6304",
+          "quantity": 12,
+          "unit_amount": 0.0,
+          "amount_total": 0.0
+        },
+        {
+          "product_id": 18,
+          "description": "Missions-Rosenkranz",
+          "article_number": "3598",
+          "quantity": 12,
+          "unit_amount": 5.0,
+          "amount_total": 60.0
+        }
+      ],
+      "delivery_address": {
+        "title": "Frau",
+        "first_name": "Myriam",
+        "last_name": "Udry",
+        "company_name": "",
+        "care_of": "",
+        "department": "",
+        "street": "Chemin des Courtis",
+        "street_number": "2a",
+        "po_box": "",
+        "postal_code": "1976",
+        "city": "Daillon",
+        "country": "CH"
+      },
+      "invoice_address": {
+        "title": "",
+        "first_name": "",
+        "last_name": "",
+        "company_name": "",
+        "care_of": "",
+        "department": "",
+        "street": "",
+        "street_number": "",
+        "po_box": "",
+        "postal_code": "",
+        "city": "",
+        "country": "CH"
+      },
+      "currency": "CHF",
+      "amount_subtotal": 60.0,
+      "amount_tax": 5.75,
+      "amount_total": 72.0,
+      "payment": {
+        "method": "twint",
+        "status": "completed"
+      },
+      "shipping_method": "Service-Pauschale B-Post Paket",
+      "shipping_cost": 12.0
+    }
+  }
+}
