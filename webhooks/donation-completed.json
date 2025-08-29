@@ -60,18 +60,27 @@
               "type": "string",
               "description": "Donation purpose or category"
             },
+            "invoice_number": {
+              "type": "string",
+              "description": "Invoice number (null for non-invoice payments)"
+            },
             "donor": {
               "type": "object",
-              "required": ["name", "email", "street_name", "street_number", "city", "postal_code", "country", "language"],
+              "required": ["first_name", "last_name", "email", "street_name", "street_number", "city", "postal_code", "country", "language"],
               "properties": {
                 "title": {
                   "type": "string",
                   "description": "Donor title (optional)"
                 },
-                "name": {
+                "first_name": {
                   "type": "string",
                   "minLength": 1,
-                  "description": "Donor full name"
+                  "description": "Donor first name"
+                },
+                "last_name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Donor last name"
                 },
                 "company": {
                   "type": "string",
@@ -127,20 +136,7 @@
                   "type": "string",
                   "enum": ["completed", "pending", "failed"],
                   "description": "Payment status"
-                },
-
-                "invoice_number": {
-                  "type": "string",
-                  "description": "Invoice number for invoice payments"
                 }
-              },
-              "if": {
-                "properties": {
-                  "method": { "const": "invoice" }
-                }
-              },
-              "then": {
-                "required": ["method", "status", "invoice_number"]
               }
             }
           }
@@ -162,9 +158,11 @@
           "currency": "CHF",
           "campaign": "Schule statt Fabrik – Hoffnung statt Ausbeutung",
           "purpose": "Freie Spende",
+          "invoice_number": null,
           "donor": {
             "title": "Frau",
-            "name": "Jana Dockter",
+            "first_name": "Jana",
+            "last_name": "Dockter",
             "street_name": "Jubiläumsstrasse",
             "street_number": "23",
             "city": "Bern",
@@ -193,8 +191,10 @@
           "currency": "CHF",
           "campaign": "Wildhunde Patenschaft",
           "purpose": "Tierpatenschaft",
+          "invoice_number": null,
           "donor": {
-            "name": "Max Müller",
+            "first_name": "Max",
+            "last_name": "Müller",
             "company": "Tech Solutions AG",
             "street_name": "Bahnhofstrasse",
             "street_number": "1",
@@ -224,9 +224,11 @@
           "currency": "CHF",
           "campaign": "Bildung für alle",
           "purpose": "Bildungsprojekt",
+          "invoice_number": "INV-2025-001190",
           "donor": {
             "title": "Herr",
-            "name": "Peter Schmidt",
+            "first_name": "Peter",
+            "last_name": "Schmidt",
             "street_name": "Musterstrasse",
             "street_number": "42",
             "po_box": "Postfach 1234",
@@ -238,8 +240,7 @@
           },
           "payment": {
             "method": "invoice",
-            "status": "pending",
-            "invoice_number": "INV-2025-001190"
+            "status": "pending"
           }
         }
       }

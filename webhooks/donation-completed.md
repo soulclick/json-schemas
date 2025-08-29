@@ -36,6 +36,7 @@ The `donation` object contains detailed information about the completed donation
 | `currency` | string | Yes | ISO 4217 currency code (3 uppercase letters) |
 | `campaign` | string | Yes | Campaign or product name |
 | `purpose` | string | Yes | Donation purpose or category |
+| `invoice_number` | string | No | Invoice number (null for non-invoice payments) |
 | `donor` | object | Yes | Donor information |
 | `payment` | object | Yes | Payment information |
 
@@ -43,7 +44,8 @@ The `donation` object contains detailed information about the completed donation
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `name` | string | Yes | Donor full name (minimum 1 character) |
+| `first_name` | string | Yes | Donor first name (minimum 1 character) |
+| `last_name` | string | Yes | Donor last name (minimum 1 character) |
 | `email` | string | Yes | Donor email address (valid email format) |
 | `street_name` | string | Yes | Street name |
 | `street_number` | string | Yes | Street number |
@@ -61,7 +63,6 @@ The `donation` object contains detailed information about the completed donation
 |-------|------|----------|-------------|
 | `method` | string | Yes | Payment method used |
 | `status` | string | Yes | Payment status |
-| `invoice_number` | string | Conditional | Invoice number (required only for invoice payments) |
 
 #### Payment Methods
 
@@ -79,9 +80,6 @@ The following payment methods are supported:
 - `pending` - Payment is being processed
 - `failed` - Payment processing failed
 
-#### Conditional Validation
-
-When the payment method is `invoice`, the `invoice_number` field becomes required.
 
 ## Example Payloads
 
@@ -101,9 +99,11 @@ When the payment method is `invoice`, the `invoice_number` field becomes require
       "currency": "CHF",
       "campaign": "Schule statt Fabrik – Hoffnung statt Ausbeutung",
       "purpose": "Freie Spende",
+      "invoice_number": null,
       "donor": {
         "title": "Frau",
-        "name": "Jana Dockter",
+        "first_name": "Jana",
+        "last_name": "Dockter",
         "street_name": "Jubiläumsstrasse",
         "street_number": "23",
         "city": "Bern",
@@ -137,8 +137,10 @@ When the payment method is `invoice`, the `invoice_number` field becomes require
       "currency": "CHF",
       "campaign": "Wildhunde Patenschaft",
       "purpose": "Tierpatenschaft",
+      "invoice_number": null,
       "donor": {
-        "name": "Max Müller",
+        "first_name": "Max",
+        "last_name": "Müller",
         "company": "Tech Solutions AG",
         "street_name": "Bahnhofstrasse",
         "street_number": "1",
@@ -173,9 +175,11 @@ When the payment method is `invoice`, the `invoice_number` field becomes require
       "currency": "CHF",
       "campaign": "Bildung für alle",
       "purpose": "Bildungsprojekt",
+      "invoice_number": "INV-2025-001190",
       "donor": {
         "title": "Herr",
-        "name": "Peter Schmidt",
+        "first_name": "Peter",
+        "last_name": "Schmidt",
         "street_name": "Musterstrasse",
         "street_number": "42",
         "po_box": "Postfach 1234",
@@ -187,8 +191,7 @@ When the payment method is `invoice`, the `invoice_number` field becomes require
       },
       "payment": {
         "method": "invoice",
-        "status": "pending",
-        "invoice_number": "INV-2025-001190"
+        "status": "pending"
       }
     }
   }

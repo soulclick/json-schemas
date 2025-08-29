@@ -11,9 +11,11 @@
       "currency": "CHF",
       "campaign": "Bildung für alle",
       "purpose": "Bildungsprojekt",
+      "invoice_number": "INV-2025-001190",
       "donor": {
         "title": "Herr",
-        "name": "Peter Schmidt",
+        "first_name": "Peter",
+        "last_name": "Schmidt",
         "street_name": "Musterstrasse",
         "street_number": "42",
         "po_box": "Postfach 1234",
@@ -25,8 +27,7 @@
       },
       "payment": {
         "method": "invoice",
-        "status": "pending",
-        "invoice_number": "INV-2025-001190"
+        "status": "pending"
       }
     }
   }

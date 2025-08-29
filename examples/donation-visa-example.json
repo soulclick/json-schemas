@@ -11,8 +11,10 @@
       "currency": "CHF",
       "campaign": "Wildhunde Patenschaft",
       "purpose": "Tierpatenschaft",
+      "invoice_number": null,
       "donor": {
-        "name": "Max Müller",
+        "first_name": "Max",
+        "last_name": "Müller",
         "company": "Tech Solutions AG",
         "street_name": "Bahnhofstrasse",
         "street_number": "1",

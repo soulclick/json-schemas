@@ -9,26 +9,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Comprehensive webhook documentation for donation.completed event
+- Added `company` field to donor object for company donations
+- Added structured address fields: `street_name`, `street_number`, `po_box`
+- Added `language` field to donor object for preferred language (required)
+- Added `invoice_number` field to donation object for invoice tracking
 
 ### Changed
 - Updated environment naming to use short forms (test, stage, prod)
 - Replaced 'production' with 'prod' in schema and examples
 - Added 'test' environment to enum
-
-### Added
-- Added `company` field to donor object for company donations
-- Added structured address fields: `street_name`, `street_number`, `po_box`
-- Added `language` field to donor object for preferred language (required)
-
-### Changed
 - Wrapped donation data in `donation` object within `event.data`
 - Updated schema structure from `event.data.*` to `event.data.donation.*`
 - Replaced single `address` field with separate `street_name` and `street_number` fields
 - Made address fields required: `street_name`, `street_number`, `city`, `postal_code`, `country`
 - Separated `city` and `postal_code` into distinct fields
+- Split donor `name` field into separate `first_name` and `last_name` fields
+- Moved `invoice_number` from payment object to donation level
+- Simplified payment object to only contain `method` and `status`
 
 ### Removed
 - Removed 'bank_transfer' from payment methods enum
+- Removed conditional validation for `invoice_number` in payment object
 
 ## [1.0.1] - 2025-08-27
 

@@ -11,9 +11,11 @@
       "currency": "CHF",
       "campaign": "Schule statt Fabrik – Hoffnung statt Ausbeutung",
       "purpose": "Freie Spende",
+      "invoice_number": null,
       "donor": {
         "title": "Frau",
-        "name": "Jana Dockter",
+        "first_name": "Jana",
+        "last_name": "Dockter",
         "street_name": "Jubiläumsstrasse",
         "street_number": "23",
         "city": "Bern",
