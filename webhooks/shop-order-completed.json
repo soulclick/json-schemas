@@ -83,9 +83,9 @@
               "type": "object",
               "required": ["country"],
               "properties": {
-                "company_name": {
+                "title": {
                   "type": "string",
-                  "description": "Company name (optional)"
+                  "description": "Title (optional)"
                 },
                 "first_name": {
                   "type": "string",
@@ -95,9 +95,17 @@
                   "type": "string",
                   "description": "Last name"
                 },
-                "title": {
+                "company_name": {
                   "type": "string",
-                  "description": "Title (optional)"
+                  "description": "Company name (optional)"
+                },
+                "care_of": {
+                  "type": "string",
+                  "description": "Care of / attention to (z.Hd.) - optional"
+                },
+                "department": {
+                  "type": "string",
+                  "description": "Department (optional)"
                 },
                 "street": {
                   "type": "string",
@@ -107,7 +115,11 @@
                   "type": "string",
                   "description": "Street number"
                 },
-                "zip": {
+                "po_box": {
+                  "type": "string",
+                  "description": "PO Box (optional)"
+                },
+                "postal_code": {
                   "type": "string",
                   "description": "Postal code"
                 },
@@ -115,40 +127,20 @@
                   "type": "string",
                   "description": "City"
                 },
-                "canton": {
-                  "type": "string",
-                  "description": "Canton/state"
-                },
                 "country": {
                   "type": "string",
                   "pattern": "^[A-Z]{2}$",
                   "description": "ISO 3166-1 alpha-2 country code"
                 },
-                "department": {
-                  "type": "string",
-                  "description": "Department (optional)"
-                },
-                "refers_to": {
-                  "type": "string",
-                  "description": "Refers to field (optional)"
-                },
-                "address_2": {
-                  "type": "string",
-                  "description": "Additional address line (optional)"
-                },
-                "municipality": {
-                  "type": "string",
-                  "description": "Municipality (optional)"
-                }
               }
             },
             "invoice_address": {
               "type": "object",
               "required": ["country"],
               "properties": {
-                "company_name": {
+                "title": {
                   "type": "string",
-                  "description": "Company name (optional)"
+                  "description": "Title (optional)"
                 },
                 "first_name": {
                   "type": "string",
@@ -158,9 +150,17 @@
                   "type": "string",
                   "description": "Last name"
                 },
-                "title": {
+                "company_name": {
                   "type": "string",
-                  "description": "Title (optional)"
+                  "description": "Company name (optional)"
+                },
+                "care_of": {
+                  "type": "string",
+                  "description": "Care of / attention to (z.Hd.) - optional"
+                },
+                "department": {
+                  "type": "string",
+                  "description": "Department (optional)"
                 },
                 "street": {
                   "type": "string",
@@ -170,7 +170,11 @@
                   "type": "string",
                   "description": "Street number"
                 },
-                "zip": {
+                "po_box": {
+                  "type": "string",
+                  "description": "PO Box (optional)"
+                },
+                "postal_code": {
                   "type": "string",
                   "description": "Postal code"
                 },
@@ -178,31 +182,11 @@
                   "type": "string",
                   "description": "City"
                 },
-                "canton": {
-                  "type": "string",
-                  "description": "Canton/state"
-                },
                 "country": {
                   "type": "string",
                   "pattern": "^[A-Z]{2}$",
                   "description": "ISO 3166-1 alpha-2 country code"
                 },
-                "department": {
-                  "type": "string",
-                  "description": "Department (optional)"
-                },
-                "refers_to": {
-                  "type": "string",
-                  "description": "Refers to field (optional)"
-                },
-                "address_2": {
-                  "type": "string",
-                  "description": "Additional address line (optional)"
-                },
-                "municipality": {
-                  "type": "string",
-                  "description": "Municipality (optional)"
-                }
               }
             },
             "items": {
@@ -299,36 +283,32 @@
             "language": "fr"
           },
           "delivery_address": {
-            "company_name": "",
+            "title": "Frau",
             "first_name": "Myriam",
             "last_name": "Udry",
-            "title": "Frau",
+            "company_name": "",
+            "care_of": "",
+            "department": "",
             "street": "Chemin des Courtis",
             "street_number": "2a",
-            "zip": "1976",
+            "po_box": "",
+            "postal_code": "1976",
             "city": "Daillon",
-            "canton": "VS",
-            "country": "CH",
-            "department": "",
-            "refers_to": "",
-            "address_2": "",
-            "municipality": ""
+            "country": "CH"
           },
           "invoice_address": {
-            "company_name": "",
+            "title": "",
             "first_name": "",
             "last_name": "",
-            "title": "",
+            "company_name": "",
+            "care_of": "",
+            "department": "",
             "street": "",
             "street_number": "",
-            "zip": "",
+            "po_box": "",
+            "postal_code": "",
             "city": "",
-            "canton": "",
-            "country": "CH",
-            "department": "",
-            "refers_to": "",
-            "address_2": "",
-            "municipality": ""
+            "country": "CH"
           },
           "items": [
             {
@@ -377,36 +357,32 @@
             "language": "de"
           },
           "delivery_address": {
-            "company_name": "Sanela Zeba",
+            "title": "Frau",
             "first_name": "",
             "last_name": "",
-            "title": "Frau",
+            "company_name": "Sanela Zeba",
+            "care_of": "",
+            "department": "",
             "street": "Büntstrasse",
             "street_number": "4",
-            "zip": "9442",
+            "po_box": "",
+            "postal_code": "9442",
             "city": "Berneck",
-            "canton": "SG",
-            "country": "CH",
-            "department": "",
-            "refers_to": "",
-            "address_2": "",
-            "municipality": ""
+            "country": "CH"
           },
           "invoice_address": {
-            "company_name": "Sanela Zeba",
+            "title": "Frau",
             "first_name": "",
             "last_name": "",
-            "title": "Frau",
+            "company_name": "Sanela Zeba",
+            "care_of": "",
+            "department": "",
             "street": "Büntstrasse",
             "street_number": "4",
-            "zip": "9442",
+            "po_box": "",
+            "postal_code": "9442",
             "city": "Berneck",
-            "canton": "SG",
-            "country": "CH",
-            "department": "",
-            "refers_to": "",
-            "address_2": "",
-            "municipality": ""
+            "country": "CH"
           },
           "items": [
             {

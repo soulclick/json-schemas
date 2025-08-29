@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added structured address fields: `street_name`, `street_number`, `po_box`
 - Added `language` field to donor object for preferred language (required)
 - Added `invoice` field to donation object for invoice tracking
+- Added shop_order.completed webhook schema with support for both registered users and guest customers
 
 ### Changed
 - Updated environment naming to use short forms (test, stage, prod)
@@ -26,10 +27,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Split donor `name` field into separate `first_name` and `last_name` fields
 - Moved `invoice` from payment object to donation level
 - Simplified payment object to only contain `method` and `status`
+- Reordered address fields in shop order schema for better logical flow (personal info → company info → physical address → location)
+- Updated shop order schema field names for consistency: `gender` → `title`, `refers_to` → `care_of`, `address_2` → `po_box`, `zip` → `postal_code`
+- Changed shop order ID from integer to string (order number)
 
 ### Removed
 - Removed 'bank_transfer' from payment methods enum
 - Removed conditional validation for `invoice` in payment object
+- Removed `order.status` field from shop order schema
+- Removed `canton` and `municipality` fields from shop order addresses
 
 ## [1.0.1] - 2025-08-27
 
