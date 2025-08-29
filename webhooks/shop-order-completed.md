@@ -11,8 +11,8 @@ The webhook payload follows a consistent structure with event metadata at the ro
 | Field         | Type    | Required | Description                                                    |
 | ------------- | ------- | -------- | -------------------------------------------------------------- |
 | `id`          | integer | Yes      | Unique event identifier                                        |
-| `event`       | string  | Yes      | Event type, always `"shop_order.completed"`                   |
-| `created_at`  | string  | Yes      | ISO 8601 timestamp when the event was created                 |
+| `event`       | string  | Yes      | Event type, always `"shop_order.completed"`                    |
+| `created_at`  | string  | Yes      | ISO 8601 timestamp when the event was created                  |
 | `environment` | string  | Yes      | Environment where the event occurred (`test`, `stage`, `prod`) |
 | `data`        | object  | Yes      | Event data containing order information                        |
 
@@ -20,69 +20,68 @@ The webhook payload follows a consistent structure with event metadata at the ro
 
 The `data` object contains the order information:
 
-| Field   | Type   | Required | Description    |
-| ------- | ------ | -------- | -------------- |
-| `order` | object | Yes      | Order details  |
+| Field   | Type   | Required | Description   |
+| ------- | ------ | -------- | ------------- |
+| `order` | object | Yes      | Order details |
 
 ### Order Properties
 
 The `order` object contains detailed information about the completed order:
 
-| Field              | Type   | Required | Description                                                   |
-| ------------------ | ------ | -------- | ------------------------------------------------------------- |
-| `id`               | string | Yes      | Order number (unique order identifier)                       |
-| `created_at`       | string | Yes      | ISO 8601 timestamp when the order was created                |
-| `customer`         | object | Yes      | Customer information                                          |
-| `items`            | array  | Yes      | Array of ordered items                                        |
-| `delivery_address` | object | Yes      | Delivery address information                                  |
-| `invoice_address`  | object | Yes      | Invoice address information                                   |
-| `currency`         | string | Yes      | ISO 4217 currency code (3 uppercase letters)                 |
-| `amount_subtotal`  | number | Yes      | Order subtotal before tax and shipping                       |
-| `amount_tax`       | number | Yes      | Tax amount                                                    |
-| `amount_total`     | number | Yes      | Total order amount including tax and shipping                 |
-| `payment`          | object | Yes      | Payment information                                           |
-| `shipping_method`  | string | Yes      | Shipping method                                               |
-| `shipping_cost`    | number | Yes      | Shipping cost                                                 |
+| Field              | Type   | Required | Description                                   |
+| ------------------ | ------ | -------- | --------------------------------------------- |
+| `id`               | string | Yes      | Order number (unique order identifier)        |
+| `created_at`       | string | Yes      | ISO 8601 timestamp when the order was created |
+| `customer`         | object | Yes      | Customer information                          |
+| `items`            | array  | Yes      | Array of ordered items                        |
+| `delivery_address` | object | Yes      | Delivery address information                  |
+| `invoice_address`  | object | Yes      | Invoice address information                   |
+| `currency`         | string | Yes      | ISO 4217 currency code (3 uppercase letters)  |
+| `amount_subtotal`  | number | Yes      | Order subtotal before tax and shipping        |
+| `amount_tax`       | number | Yes      | Tax amount                                    |
+| `amount_total`     | number | Yes      | Total order amount including tax and shipping |
+| `payment`          | object | Yes      | Payment information                           |
+| `shipping`         | object | Yes      | Shipping information                          |
 
 ### Customer Information
 
-| Field      | Type   | Required | Description                                                               |
-| ---------- | ------ | -------- | ------------------------------------------------------------------------- |
-| `type`     | string | Yes      | Customer type (`registered` or `guest`)                                   |
-| `email`    | string | Yes      | Customer email address (valid email format)                              |
+| Field      | Type   | Required | Description                                                                  |
+| ---------- | ------ | -------- | ---------------------------------------------------------------------------- |
+| `type`     | string | Yes      | Customer type (`registered` or `guest`)                                      |
+| `email`    | string | Yes      | Customer email address (valid email format)                                  |
 | `language` | string | Yes      | Customer's preferred language (ISO 639-1 language code, 2 lowercase letters) |
 
 ### Item Information
 
 Each item in the `items` array contains:
 
-| Field            | Type    | Required | Description                                               |
-| ---------------- | ------- | -------- | --------------------------------------------------------- |
-| `product_id`     | integer | Yes      | Product identifier                                        |
-| `description`    | string  | Yes      | Product name or description                               |
-| `quantity`       | integer | Yes      | Quantity ordered (minimum 1)                             |
-| `unit_amount`    | number  | Yes      | Unit price per item                                       |
-| `amount_total`   | number  | Yes      | Total amount for this item (quantity * unit_amount)      |
-| `article_number` | string  | No       | Article number                                            |
+| Field            | Type    | Required | Description                                          |
+| ---------------- | ------- | -------- | ---------------------------------------------------- |
+| `product_id`     | integer | Yes      | Product identifier                                   |
+| `description`    | string  | Yes      | Product name or description                          |
+| `quantity`       | integer | Yes      | Quantity ordered (minimum 1)                         |
+| `unit_amount`    | number  | Yes      | Unit price per item                                  |
+| `amount_total`   | number  | Yes      | Total amount for this item (quantity \* unit_amount) |
+| `article_number` | string  | No       | Article number                                       |
 
 ### Address Information
 
 Both `delivery_address` and `invoice_address` have the same structure:
 
-| Field            | Type   | Required | Description                                        |
-| ---------------- | ------ | -------- | -------------------------------------------------- |
-| `street`         | string | Yes      | Street name                                        |
-| `street_number`  | string | Yes      | Street number                                      |
-| `postal_code`    | string | Yes      | Postal code                                        |
-| `city`           | string | Yes      | City                                               |
-| `country`        | string | Yes      | ISO 3166-1 alpha-2 country code (2 uppercase letters) |
-| `title`          | string | No       | Title (e.g., "Herr", "Frau")                      |
-| `first_name`     | string | No       | First name                                         |
-| `last_name`      | string | No       | Last name                                          |
-| `company_name`   | string | No       | Company name                                       |
-| `care_of`        | string | No       | Care of / attention to (z.Hd.)                    |
-| `department`     | string | No       | Department                                         |
-| `po_box`         | string | No       | PO Box                                             |
+| Field           | Type   | Required | Description                                           |
+| --------------- | ------ | -------- | ----------------------------------------------------- |
+| `street`        | string | Yes      | Street name                                           |
+| `street_number` | string | Yes      | Street number                                         |
+| `postal_code`   | string | Yes      | Postal code                                           |
+| `city`          | string | Yes      | City                                                  |
+| `country`       | string | Yes      | ISO 3166-1 alpha-2 country code (2 uppercase letters) |
+| `title`         | string | No       | Title (e.g., "Herr", "Frau")                          |
+| `first_name`    | string | No       | First name                                            |
+| `last_name`     | string | No       | Last name                                             |
+| `company_name`  | string | No       | Company name                                          |
+| `care_of`       | string | No       | Care of / attention to (z.Hd.)                        |
+| `department`    | string | No       | Department                                            |
+| `po_box`        | string | No       | PO Box                                                |
 
 ### Payment Information
 
@@ -106,6 +105,13 @@ The following payment methods are supported:
 - `completed` - Payment has been successfully processed
 - `pending` - Payment is being processed
 - `failed` - Payment processing failed
+
+### Shipping Information
+
+| Field    | Type   | Required | Description     |
+| -------- | ------ | -------- | --------------- |
+| `method` | string | Yes      | Shipping method |
+| `cost`   | number | Yes      | Shipping cost   |
 
 ## Example Payloads
 
@@ -180,8 +186,10 @@ The following payment methods are supported:
         "method": "twint",
         "status": "completed"
       },
-      "shipping_method": "Service-Pauschale B-Post Paket",
-      "shipping_cost": 12.0
+      "shipping": {
+        "method": "Service-Pauschale B-Post Paket",
+        "cost": 12.0
+      }
     }
   }
 }
@@ -250,8 +258,10 @@ The following payment methods are supported:
         "method": "invoice",
         "status": "pending"
       },
-      "shipping_method": "Service-Pauschale B-Post Paket",
-      "shipping_cost": 0.0
+      "shipping": {
+        "method": "Service-Pauschale B-Post Paket",
+        "cost": 0.0
+      }
     }
   }
 }

@@ -42,8 +42,7 @@
             "amount_tax",
             "amount_total",
             "payment",
-            "shipping_method",
-            "shipping_cost"
+            "shipping"
           ],
           "properties": {
             "id": {
@@ -272,7 +271,13 @@
               "properties": {
                 "method": {
                   "type": "string",
-                  "enum": ["twint", "visa", "mastercard", "postfinance", "invoice"],
+                  "enum": [
+                    "twint",
+                    "visa",
+                    "mastercard",
+                    "postfinance",
+                    "invoice"
+                  ],
                   "description": "Payment method used"
                 },
                 "status": {
@@ -282,15 +287,21 @@
                 }
               }
             },
-            "shipping_method": {
-              "type": "string",
-              "description": "Shipping method"
-            },
-            "shipping_cost": {
-              "type": "number",
-              "minimum": 0,
-              "multipleOf": 0.01,
-              "description": "Shipping cost"
+            "shipping": {
+              "type": "object",
+              "required": ["method", "cost"],
+              "properties": {
+                "method": {
+                  "type": "string",
+                  "description": "Shipping method"
+                },
+                "cost": {
+                  "type": "number",
+                  "minimum": 0,
+                  "multipleOf": 0.01,
+                  "description": "Shipping cost"
+                }
+              }
             }
           }
         }
@@ -366,8 +377,10 @@
             "method": "twint",
             "status": "completed"
           },
-          "shipping_method": "Service-Pauschale B-Post Paket",
-          "shipping_cost": 12.0
+          "shipping": {
+            "method": "Service-Pauschale B-Post Paket",
+            "cost": 12.0
+          }
         }
       }
     },
@@ -431,8 +444,10 @@
             "method": "invoice",
             "status": "pending"
           },
-          "shipping_method": "Service-Pauschale B-Post Paket",
-          "shipping_cost": 0.0
+          "shipping": {
+            "method": "Service-Pauschale B-Post Paket",
+            "cost": 0.0
+          }
         }
       }
     }

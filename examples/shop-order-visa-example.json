@@ -18,16 +18,16 @@
           "description": "Schweizer Kreuz Anhänger",
           "article_number": "3421",
           "quantity": 1,
-          "unit_amount": 29.90,
-          "amount_total": 29.90
+          "unit_amount": 29.9,
+          "amount_total": 29.9
         },
         {
           "product_id": 58,
           "description": "Gebetskette Holz",
           "article_number": "4789",
           "quantity": 2,
-          "unit_amount": 15.50,
-          "amount_total": 31.00
+          "unit_amount": 15.5,
+          "amount_total": 31.0
         }
       ],
       "delivery_address": {
@@ -59,15 +59,17 @@
         "country": "CH"
       },
       "currency": "CHF",
-      "amount_subtotal": 60.90,
+      "amount_subtotal": 60.9,
       "amount_tax": 4.87,
       "amount_total": 73.77,
       "payment": {
         "method": "visa",
         "status": "completed"
       },
-      "shipping_method": "Standard Versand",
-      "shipping_cost": 8.00
+      "shipping": {
+        "method": "Standard Versand",
+        "cost": 8.0
+      }
     }
   }
 }

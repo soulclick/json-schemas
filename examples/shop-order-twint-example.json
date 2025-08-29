@@ -66,8 +66,10 @@
         "method": "twint",
         "status": "completed"
       },
-      "shipping_method": "Service-Pauschale B-Post Paket",
-      "shipping_cost": 12.0
+      "shipping": {
+        "method": "Service-Pauschale B-Post Paket",
+        "cost": 12.0
+      }
     }
   }
 }

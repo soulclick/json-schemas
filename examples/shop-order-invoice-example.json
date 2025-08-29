@@ -58,8 +58,10 @@
         "method": "invoice",
         "status": "pending"
       },
-      "shipping_method": "Service-Pauschale B-Post Paket",
-      "shipping_cost": 0.0
+      "shipping": {
+        "method": "Service-Pauschale B-Post Paket",
+        "cost": 0.0
+      }
     }
   }
 }
