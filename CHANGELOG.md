@@ -30,6 +30,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Reordered address fields in shop order schema for better logical flow (personal info → company info → physical address → location)
 - Updated shop order schema field names for consistency: `gender` → `title`, `refers_to` → `care_of`, `address_2` → `po_box`, `zip` → `postal_code`
 - Changed shop order ID from integer to string (order number)
+- Updated shop order amount fields: `total_price` → `amount_total`, `vat_price` → `amount_tax`
+- Updated shop order item fields to use Stripe-like naming: `product_name` → `description`, `unit_price` → `unit_amount`, `total_price` → `amount_total`
 
 ### Removed
 - Removed 'bank_transfer' from payment methods enum

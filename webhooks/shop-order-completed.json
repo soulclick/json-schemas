@@ -30,7 +30,7 @@
       "properties": {
         "order": {
           "type": "object",
-          "required": ["id", "created_at", "total_price", "vat_price", "currency", "customer", "delivery_address", "invoice_address", "items", "payment", "shipment"],
+          "required": ["id", "created_at", "amount_total", "amount_tax", "currency", "customer", "delivery_address", "invoice_address", "items", "payment", "shipment"],
           "properties": {
             "id": {
               "type": "string",
@@ -41,17 +41,17 @@
               "format": "date-time",
               "description": "ISO 8601 timestamp when order was created"
             },
-            "total_price": {
+            "amount_total": {
               "type": "number",
               "minimum": 0,
               "multipleOf": 0.01,
-              "description": "Total order amount including VAT and shipping"
+              "description": "Total order amount including tax and shipping"
             },
-            "vat_price": {
+            "amount_tax": {
               "type": "number",
               "minimum": 0,
               "multipleOf": 0.01,
-              "description": "VAT amount"
+              "description": "Tax amount"
             },
             "currency": {
               "type": "string",
@@ -194,15 +194,15 @@
               "minItems": 1,
               "items": {
                 "type": "object",
-                "required": ["product_id", "product_name", "quantity", "unit_price", "total_price"],
+                "required": ["product_id", "description", "quantity", "unit_amount", "amount_total"],
                 "properties": {
                   "product_id": {
                     "type": "integer",
                     "description": "Product identifier"
                   },
-                  "product_name": {
+                  "description": {
                     "type": "string",
-                    "description": "Product name"
+                    "description": "Product name or description"
                   },
                   "article_number": {
                     "type": "string",
@@ -213,17 +213,17 @@
                     "minimum": 1,
                     "description": "Quantity ordered"
                   },
-                  "unit_price": {
+                  "unit_amount": {
                     "type": "number",
                     "minimum": 0,
                     "multipleOf": 0.01,
-                    "description": "Unit price"
+                    "description": "Unit price per item"
                   },
-                  "total_price": {
+                  "amount_total": {
                     "type": "number",
                     "minimum": 0,
                     "multipleOf": 0.01,
-                    "description": "Total price for this item (quantity * unit_price)"
+                    "description": "Total amount for this item (quantity * unit_amount)"
                   }
                 }
               }
@@ -274,8 +274,8 @@
         "order": {
           "id": "2708202500000",
           "created_at": "2025-08-27T13:17:47Z",
-          "total_price": 72.0,
-          "vat_price": 5.75,
+          "amount_total": 72.0,
+          "amount_tax": 5.75,
           "currency": "CHF",
           "customer": {
             "type": "guest",
@@ -313,19 +313,19 @@
           "items": [
             {
               "product_id": 86,
-              "product_name": "Kleber \"Rund um die Welt\"",
+              "description": "Kleber \"Rund um die Welt\"",
               "article_number": "6304",
               "quantity": 12,
-              "unit_price": 0.0,
-              "total_price": 0.0
+              "unit_amount": 0.0,
+              "amount_total": 0.0
             },
             {
               "product_id": 18,
-              "product_name": "Missions-Rosenkranz",
+              "description": "Missions-Rosenkranz",
               "article_number": "3598",
               "quantity": 12,
-              "unit_price": 5.0,
-              "total_price": 60.0
+              "unit_amount": 5.0,
+              "amount_total": 60.0
             }
           ],
           "payment": {
@@ -348,8 +348,8 @@
         "order": {
           "id": "2708202500002",
           "created_at": "2025-08-27T16:37:20Z",
-          "total_price": 0.0,
-          "vat_price": 0.0,
+          "amount_total": 0.0,
+          "amount_tax": 0.0,
           "currency": "CHF",
           "customer": {
             "type": "registered",
@@ -387,11 +387,11 @@
           "items": [
             {
               "product_id": 45,
-              "product_name": "Sample Product",
+              "description": "Sample Product",
               "article_number": "9104",
               "quantity": 1,
-              "unit_price": 0.0,
-              "total_price": 0.0
+              "unit_amount": 0.0,
+              "amount_total": 0.0
             }
           ],
           "payment": {
