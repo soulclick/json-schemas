@@ -46,19 +46,8 @@ You can view the shop_order.completed schema in a user-friendly format using the
 
 ```
 json-schemas/
-├── README.md
-├── webhooks/
-│   ├── donation-completed.json      # Donation webhook JSON Schema
-│   ├── donation-completed.md        # Donation webhook documentation
-│   ├── shop-order-completed.json    # Shop order webhook JSON Schema
-│   └── shop-order-completed.md      # Shop order webhook documentation
-└── examples/
-    ├── donation-twint-example.json
-    ├── donation-visa-example.json
-    ├── donation-invoice-example.json
-    ├── shop-order-twint-example.json
-    ├── shop-order-visa-example.json
-    └── shop-order-invoice-example.json
+├── webhooks/     # JSON Schema definitions and documentation
+└── examples/     # Example webhook payloads for testing
 ```
 
 ## Usage
