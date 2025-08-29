@@ -1,0 +1,433 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Shop Order Completed Event",
+  "description": "Schema for shop_order.completed webhook events",
+  "required": ["id", "event", "created_at", "environment", "data"],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique event identifier"
+    },
+    "event": {
+      "type": "string",
+      "enum": ["shop_order.completed"],
+      "description": "Event type"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when event was created"
+    },
+    "environment": {
+      "type": "string",
+      "enum": ["test", "stage", "prod"],
+      "description": "Environment where event occurred"
+    },
+    "data": {
+      "type": "object",
+      "required": ["order"],
+      "properties": {
+        "order": {
+          "type": "object",
+          "required": ["id", "created_at", "total_price", "vat_price", "currency", "customer", "delivery_address", "invoice_address", "items", "payment", "shipment"],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Order number (unique order identifier)"
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "ISO 8601 timestamp when order was created"
+            },
+            "total_price": {
+              "type": "number",
+              "minimum": 0,
+              "multipleOf": 0.01,
+              "description": "Total order amount including VAT and shipping"
+            },
+            "vat_price": {
+              "type": "number",
+              "minimum": 0,
+              "multipleOf": 0.01,
+              "description": "VAT amount"
+            },
+            "currency": {
+              "type": "string",
+              "pattern": "^[A-Z]{3}$",
+              "description": "ISO 4217 currency code"
+            },
+            "customer": {
+              "type": "object",
+              "required": ["type", "email", "language"],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["registered", "guest"],
+                  "description": "Customer type - registered user or guest"
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "description": "Customer email address"
+                },
+                "language": {
+                  "type": "string",
+                  "pattern": "^[a-z]{2}$",
+                  "description": "Customer's preferred language (ISO 639-1 language code)"
+                }
+              }
+            },
+            "delivery_address": {
+              "type": "object",
+              "required": ["country"],
+              "properties": {
+                "company_name": {
+                  "type": "string",
+                  "description": "Company name (optional)"
+                },
+                "first_name": {
+                  "type": "string",
+                  "description": "First name"
+                },
+                "last_name": {
+                  "type": "string",
+                  "description": "Last name"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Title (optional)"
+                },
+                "street": {
+                  "type": "string",
+                  "description": "Street name"
+                },
+                "street_number": {
+                  "type": "string",
+                  "description": "Street number"
+                },
+                "zip": {
+                  "type": "string",
+                  "description": "Postal code"
+                },
+                "city": {
+                  "type": "string",
+                  "description": "City"
+                },
+                "canton": {
+                  "type": "string",
+                  "description": "Canton/state"
+                },
+                "country": {
+                  "type": "string",
+                  "pattern": "^[A-Z]{2}$",
+                  "description": "ISO 3166-1 alpha-2 country code"
+                },
+                "department": {
+                  "type": "string",
+                  "description": "Department (optional)"
+                },
+                "refers_to": {
+                  "type": "string",
+                  "description": "Refers to field (optional)"
+                },
+                "address_2": {
+                  "type": "string",
+                  "description": "Additional address line (optional)"
+                },
+                "municipality": {
+                  "type": "string",
+                  "description": "Municipality (optional)"
+                }
+              }
+            },
+            "invoice_address": {
+              "type": "object",
+              "required": ["country"],
+              "properties": {
+                "company_name": {
+                  "type": "string",
+                  "description": "Company name (optional)"
+                },
+                "first_name": {
+                  "type": "string",
+                  "description": "First name"
+                },
+                "last_name": {
+                  "type": "string",
+                  "description": "Last name"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Title (optional)"
+                },
+                "street": {
+                  "type": "string",
+                  "description": "Street name"
+                },
+                "street_number": {
+                  "type": "string",
+                  "description": "Street number"
+                },
+                "zip": {
+                  "type": "string",
+                  "description": "Postal code"
+                },
+                "city": {
+                  "type": "string",
+                  "description": "City"
+                },
+                "canton": {
+                  "type": "string",
+                  "description": "Canton/state"
+                },
+                "country": {
+                  "type": "string",
+                  "pattern": "^[A-Z]{2}$",
+                  "description": "ISO 3166-1 alpha-2 country code"
+                },
+                "department": {
+                  "type": "string",
+                  "description": "Department (optional)"
+                },
+                "refers_to": {
+                  "type": "string",
+                  "description": "Refers to field (optional)"
+                },
+                "address_2": {
+                  "type": "string",
+                  "description": "Additional address line (optional)"
+                },
+                "municipality": {
+                  "type": "string",
+                  "description": "Municipality (optional)"
+                }
+              }
+            },
+            "items": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": ["product_id", "product_name", "quantity", "unit_price", "total_price"],
+                "properties": {
+                  "product_id": {
+                    "type": "integer",
+                    "description": "Product identifier"
+                  },
+                  "product_name": {
+                    "type": "string",
+                    "description": "Product name"
+                  },
+                  "article_number": {
+                    "type": "string",
+                    "description": "Article number"
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Quantity ordered"
+                  },
+                  "unit_price": {
+                    "type": "number",
+                    "minimum": 0,
+                    "multipleOf": 0.01,
+                    "description": "Unit price"
+                  },
+                  "total_price": {
+                    "type": "number",
+                    "minimum": 0,
+                    "multipleOf": 0.01,
+                    "description": "Total price for this item (quantity * unit_price)"
+                  }
+                }
+              }
+            },
+            "payment": {
+              "type": "object",
+              "required": ["method"],
+              "properties": {
+                "method": {
+                  "type": "string",
+                  "enum": ["Twint", "VISA", "MASTERCARD", "PayPal", "invoice"],
+                  "description": "Payment method used"
+                },
+                "transaction_id": {
+                  "type": "string",
+                  "description": "Payment transaction identifier"
+                }
+              }
+            },
+            "shipment": {
+              "type": "object",
+              "required": ["type", "cost"],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "description": "Shipment type/method"
+                },
+                "cost": {
+                  "type": "number",
+                  "minimum": 0,
+                  "multipleOf": 0.01,
+                  "description": "Shipping cost"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "id": 1,
+      "event": "shop_order.completed",
+      "created_at": "2025-08-29T14:04:39Z",
+      "environment": "prod",
+      "data": {
+        "order": {
+          "id": "2708202500000",
+          "created_at": "2025-08-27T13:17:47Z",
+          "total_price": 72.0,
+          "vat_price": 5.75,
+          "currency": "CHF",
+          "customer": {
+            "type": "guest",
+            "email": "myriam.udry@gmail.com",
+            "language": "fr"
+          },
+          "delivery_address": {
+            "company_name": "",
+            "first_name": "Myriam",
+            "last_name": "Udry",
+            "title": "Frau",
+            "street": "Chemin des Courtis",
+            "street_number": "2a",
+            "zip": "1976",
+            "city": "Daillon",
+            "canton": "VS",
+            "country": "CH",
+            "department": "",
+            "refers_to": "",
+            "address_2": "",
+            "municipality": ""
+          },
+          "invoice_address": {
+            "company_name": "",
+            "first_name": "",
+            "last_name": "",
+            "title": "",
+            "street": "",
+            "street_number": "",
+            "zip": "",
+            "city": "",
+            "canton": "",
+            "country": "CH",
+            "department": "",
+            "refers_to": "",
+            "address_2": "",
+            "municipality": ""
+          },
+          "items": [
+            {
+              "product_id": 86,
+              "product_name": "Kleber \"Rund um die Welt\"",
+              "article_number": "6304",
+              "quantity": 12,
+              "unit_price": 0.0,
+              "total_price": 0.0
+            },
+            {
+              "product_id": 18,
+              "product_name": "Missions-Rosenkranz",
+              "article_number": "3598",
+              "quantity": 12,
+              "unit_price": 5.0,
+              "total_price": 60.0
+            }
+          ],
+          "payment": {
+            "method": "Twint",
+            "transaction_id": null
+          },
+          "shipment": {
+            "type": "Service-Pauschale B-Post Paket",
+            "cost": 12.0
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "event": "shop_order.completed",
+      "created_at": "2025-08-29T15:22:15Z",
+      "environment": "prod",
+      "data": {
+        "order": {
+          "id": "2708202500002",
+          "created_at": "2025-08-27T16:37:20Z",
+          "total_price": 0.0,
+          "vat_price": 0.0,
+          "currency": "CHF",
+          "customer": {
+            "type": "registered",
+            "email": "sanela.zeba@kath-berneck.ch",
+            "language": "de"
+          },
+          "delivery_address": {
+            "company_name": "Sanela Zeba",
+            "first_name": "",
+            "last_name": "",
+            "title": "Frau",
+            "street": "Büntstrasse",
+            "street_number": "4",
+            "zip": "9442",
+            "city": "Berneck",
+            "canton": "SG",
+            "country": "CH",
+            "department": "",
+            "refers_to": "",
+            "address_2": "",
+            "municipality": ""
+          },
+          "invoice_address": {
+            "company_name": "Sanela Zeba",
+            "first_name": "",
+            "last_name": "",
+            "title": "Frau",
+            "street": "Büntstrasse",
+            "street_number": "4",
+            "zip": "9442",
+            "city": "Berneck",
+            "canton": "SG",
+            "country": "CH",
+            "department": "",
+            "refers_to": "",
+            "address_2": "",
+            "municipality": ""
+          },
+          "items": [
+            {
+              "product_id": 45,
+              "product_name": "Sample Product",
+              "article_number": "9104",
+              "quantity": 1,
+              "unit_price": 0.0,
+              "total_price": 0.0
+            }
+          ],
+          "payment": {
+            "method": "invoice",
+            "transaction_id": null
+          },
+          "shipment": {
+            "type": "Service-Pauschale B-Post Paket",
+            "cost": 0.0
+          }
+        }
+      }
+    }
+  ]
+}
