@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added shop_order.completed webhook schema with support for both registered users and guest customers
 
 ### Changed
+- Updated donation campaign field from string to object with `id` (integer) and `title` (string in German)
 - Updated environment naming to use short forms (test, stage, prod)
 - Replaced 'production' with 'prod' in schema and examples
 - Added 'test' environment to enum

@@ -34,11 +34,20 @@ The `donation` object contains detailed information about the completed donation
 | `created_at` | string  | Yes      | ISO 8601 timestamp when the donation was created |
 | `amount`     | number  | Yes      | Donation amount (minimum 0, multiple of 0.01)    |
 | `currency`   | string  | Yes      | ISO 4217 currency code (3 uppercase letters)     |
-| `campaign`   | string  | Yes      | Campaign or product name                         |
+| `campaign`   | object  | Yes      | Campaign information (id and German title)      |
 | `purpose`    | string  | Yes      | Donation purpose or category                     |
 | `donor`      | object  | Yes      | Donor information                                |
 | `payment`    | object  | Yes      | Payment information                              |
 | `invoice`    | string  | No       | Invoice number (null for non-invoice payments)   |
+
+### Campaign Properties
+
+The `campaign` object contains:
+
+| Field   | Type    | Required | Description                    |
+| ------- | ------- | -------- | ------------------------------ |
+| `id`    | integer | Yes      | Unique campaign identifier     |
+| `title` | string  | Yes      | Campaign title (in German)     |
 
 ### Donor Information
 
@@ -96,7 +105,10 @@ The following payment methods are supported:
       "created_at": "2025-08-25T10:30:00Z",
       "amount": 51.05,
       "currency": "CHF",
-      "campaign": "Schule statt Fabrik – Hoffnung statt Ausbeutung",
+      "campaign": {
+        "id": 123,
+        "title": "Schule statt Fabrik – Hoffnung statt Ausbeutung"
+      },
       "purpose": "Freie Spende",
       "donor": {
         "title": "Frau",
@@ -134,7 +146,10 @@ The following payment methods are supported:
       "created_at": "2025-08-27T09:45:00Z",
       "amount": 100.0,
       "currency": "CHF",
-      "campaign": "Wildhunde Patenschaft",
+      "campaign": {
+        "id": 456,
+        "title": "Wildhunde Patenschaft"
+      },
       "purpose": "Tierpatenschaft",
       "donor": {
         "first_name": "Max",
@@ -172,7 +187,10 @@ The following payment methods are supported:
       "created_at": "2025-08-27T08:20:00Z",
       "amount": 250.0,
       "currency": "CHF",
-      "campaign": "Bildung für alle",
+      "campaign": {
+        "id": 789,
+        "title": "Bildung für alle"
+      },
       "purpose": "Bildungsprojekt",
       "donor": {
         "title": "Herr",

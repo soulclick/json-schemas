@@ -62,8 +62,19 @@
               "description": "ISO 4217 currency code"
             },
             "campaign": {
-              "type": "string",
-              "description": "Campaign or product name"
+              "type": "object",
+              "required": ["id", "title"],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "Campaign ID"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Campaign title (German)"
+                }
+              },
+              "description": "Campaign information"
             },
             "purpose": {
               "type": "string",
@@ -181,7 +192,10 @@
           "created_at": "2025-08-25T10:30:00Z",
           "amount": 51.05,
           "currency": "CHF",
-          "campaign": "Schule statt Fabrik – Hoffnung statt Ausbeutung",
+          "campaign": {
+            "id": 123,
+            "title": "Schule statt Fabrik – Hoffnung statt Ausbeutung"
+          },
           "purpose": "Freie Spende",
           "donor": {
             "title": "Frau",
@@ -214,7 +228,10 @@
           "created_at": "2025-08-27T09:45:00Z",
           "amount": 100.0,
           "currency": "CHF",
-          "campaign": "Wildhunde Patenschaft",
+          "campaign": {
+            "id": 456,
+            "title": "Wildhunde Patenschaft"
+          },
           "purpose": "Tierpatenschaft",
           "donor": {
             "first_name": "Max",
@@ -247,7 +264,10 @@
           "created_at": "2025-08-27T08:20:00Z",
           "amount": 250.0,
           "currency": "CHF",
-          "campaign": "Bildung für alle",
+          "campaign": {
+            "id": 789,
+            "title": "Bildung für alle"
+          },
           "purpose": "Bildungsprojekt",
           "donor": {
             "title": "Herr",
