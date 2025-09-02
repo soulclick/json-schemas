@@ -31,10 +31,9 @@
         }
       ],
       "delivery_address": {
-        "title": "Frau",
+        "gender": "female",
         "first_name": "Myriam",
         "last_name": "Udry",
-        "company_name": "",
         "care_of": "",
         "department": "",
         "street": "Chemin des Courtis",
@@ -45,10 +44,9 @@
         "country": "CH"
       },
       "invoice_address": {
-        "title": "",
+        "gender": "prefer-not-to-say",
         "first_name": "",
         "last_name": "",
-        "company_name": "",
         "care_of": "",
         "department": "",
         "street": "",

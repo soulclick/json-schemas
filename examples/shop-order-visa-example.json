@@ -31,10 +31,9 @@
         }
       ],
       "delivery_address": {
-        "title": "Herr",
+        "gender": "male",
         "first_name": "Peter",
         "last_name": "Müller",
-        "company_name": "",
         "care_of": "",
         "department": "",
         "street": "Musterstrasse",
@@ -45,10 +44,9 @@
         "country": "CH"
       },
       "invoice_address": {
-        "title": "Herr",
+        "gender": "male",
         "first_name": "Peter",
         "last_name": "Müller",
-        "company_name": "",
         "care_of": "",
         "department": "",
         "street": "Musterstrasse",

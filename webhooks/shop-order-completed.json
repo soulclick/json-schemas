@@ -130,9 +130,10 @@
                 "country"
               ],
               "properties": {
-                "title": {
+                "gender": {
                   "type": "string",
-                  "description": "Title (optional)"
+                  "enum": ["male", "female", "non-binary", "prefer-not-to-say"],
+                  "description": "Gender (optional)"
                 },
                 "first_name": {
                   "type": "string",
@@ -191,9 +192,10 @@
                 "country"
               ],
               "properties": {
-                "title": {
+                "gender": {
                   "type": "string",
-                  "description": "Title (optional)"
+                  "enum": ["male", "female", "non-binary", "prefer-not-to-say"],
+                  "description": "Gender (optional)"
                 },
                 "first_name": {
                   "type": "string",
@@ -342,10 +344,9 @@
             }
           ],
           "delivery_address": {
-            "title": "Frau",
+            "gender": "female",
             "first_name": "Myriam",
             "last_name": "Udry",
-            "company_name": "",
             "care_of": "",
             "department": "",
             "street": "Chemin des Courtis",
@@ -356,17 +357,11 @@
             "country": "CH"
           },
           "invoice_address": {
-            "title": "",
-            "first_name": "",
-            "last_name": "",
-            "company_name": "",
-            "care_of": "",
-            "department": "",
-            "street": "",
-            "street_number": "",
-            "po_box": "",
-            "postal_code": "",
-            "city": "",
+            "company_name": "Tech Solutions AG",
+            "street": "Bahnhofstrasse",
+            "street_number": "1",
+            "postal_code": "8001",
+            "city": "Zürich",
             "country": "CH"
           },
           "currency": "CHF",
@@ -409,7 +404,7 @@
             }
           ],
           "delivery_address": {
-            "title": "Frau",
+            "gender": "female",
             "first_name": "",
             "last_name": "",
             "company_name": "Sanela Zeba",
@@ -423,7 +418,7 @@
             "country": "CH"
           },
           "invoice_address": {
-            "title": "Frau",
+            "gender": "female",
             "first_name": "",
             "last_name": "",
             "company_name": "Sanela Zeba",

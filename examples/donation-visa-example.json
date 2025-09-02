@@ -9,13 +9,16 @@
       "created_at": "2025-08-27T09:45:00Z",
       "amount": 100.0,
       "currency": "CHF",
-      "campaign": "Wildhunde Patenschaft",
+      "campaign": {
+        "id": 456,
+        "title": "Wildhunde Patenschaft"
+      },
       "purpose": "Tierpatenschaft",
       "donor": {
         "first_name": "Max",
         "last_name": "Müller",
         "company": "Tech Solutions AG",
-        "street_name": "Bahnhofstrasse",
+        "street": "Bahnhofstrasse",
         "street_number": "1",
         "city": "Zürich",
         "postal_code": "8001",

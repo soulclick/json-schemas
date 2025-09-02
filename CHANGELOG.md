@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - Comprehensive webhook documentation for donation.completed event
 - Added `company` field to donor object for company donations
 - Added structured address fields: `street_name`, `street_number`, `po_box`
@@ -16,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added shop_order.completed webhook schema with support for both registered users and guest customers
 
 ### Changed
+
+- Replaced `title` field with `gender` field in donation and shop order schemas (values: `male`, `female`, `non-binary`, `prefer-not-to-say`)
+- Improved address field patterns: company addresses omit personal fields entirely, personal addresses omit company fields entirely
 - Updated donation campaign field from string to object with `id` (integer) and `title` (string in German)
 - Updated environment naming to use short forms (test, stage, prod)
 - Replaced 'production' with 'prod' in schema and examples
@@ -29,7 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Moved `invoice` from payment object to donation level
 - Simplified payment object to only contain `method` and `status`
 - Reordered address fields in shop order schema for better logical flow (personal info → company info → physical address → location)
-- Updated shop order schema field names for consistency: `gender` → `title`, `refers_to` → `care_of`, `address_2` → `po_box`, `zip` → `postal_code`
+- Updated shop order schema field names for consistency: `refers_to` → `care_of`, `address_2` → `po_box`, `zip` → `postal_code`
 - Changed shop order ID from integer to string (order number)
 - Updated shop order amount fields: `total_price` → `amount_total`, `vat_price` → `amount_tax`
 - Updated shop order item fields to use Stripe-like naming: `product_name` → `description`, `unit_price` → `unit_amount`, `total_price` → `amount_total`
@@ -41,6 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `amount_subtotal` field to order for financial transparency
 
 ### Removed
+
 - Removed 'bank_transfer' from payment methods enum
 - Removed conditional validation for `invoice` in payment object
 - Removed `order.status` field from shop order schema
@@ -49,6 +54,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.1] - 2025-08-27
 
 ### Changed
+
 - Updated timestamp field names to use `_at` suffix for consistency
 - Renamed `created` to `created_at` in webhook schema and examples
 - Renamed donation `date` field to `created_at` with ISO date-time format
@@ -57,10 +63,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2025-08-27
 
 ### Added
+
 - Initial donation.completed webhook JSON schema
 - Three example files demonstrating different payment methods:
   - TWINT payment example
-  - Visa payment example  
+  - Visa payment example
   - Invoice payment example
 - README.md with project documentation
 - Support for multiple payment methods: twint, visa, mastercard, postfinance, invoice, bank_transfer
@@ -69,6 +76,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ISO standard validation for currency codes (ISO 4217) and country codes (ISO 3166-1 alpha-2)
 
 ### Schema Features
+
 - Event metadata: id, event type, timestamp, environment
 - Donation data: amount, currency, campaign, purpose
 - Donor information: name, email, optional address details

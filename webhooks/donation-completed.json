@@ -94,9 +94,10 @@
                 "language"
               ],
               "properties": {
-                "title": {
+                "gender": {
                   "type": "string",
-                  "description": "Donor title (optional)"
+                  "enum": ["male", "female", "non-binary", "prefer-not-to-say"],
+                  "description": "Donor gender (optional)"
                 },
                 "first_name": {
                   "type": "string",
@@ -198,7 +199,7 @@
           },
           "purpose": "Freie Spende",
           "donor": {
-            "title": "Frau",
+            "gender": "female",
             "first_name": "Jana",
             "last_name": "Dockter",
             "street": "Jubiläumsstrasse",
@@ -270,7 +271,7 @@
           },
           "purpose": "Bildungsprojekt",
           "donor": {
-            "title": "Herr",
+            "gender": "male",
             "first_name": "Peter",
             "last_name": "Schmidt",
             "street": "Musterstrasse",

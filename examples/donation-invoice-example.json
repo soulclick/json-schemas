@@ -9,13 +9,16 @@
       "created_at": "2025-08-27T08:20:00Z",
       "amount": 250.0,
       "currency": "CHF",
-      "campaign": "Bildung für alle",
+      "campaign": {
+        "id": 789,
+        "title": "Bildung für alle"
+      },
       "purpose": "Bildungsprojekt",
       "donor": {
-        "title": "Herr",
+        "gender": "male",
         "first_name": "Peter",
         "last_name": "Schmidt",
-        "street_name": "Musterstrasse",
+        "street": "Musterstrasse",
         "street_number": "42",
         "po_box": "Postfach 1234",
         "city": "Basel",

@@ -34,7 +34,7 @@ The `donation` object contains detailed information about the completed donation
 | `created_at` | string  | Yes      | ISO 8601 timestamp when the donation was created |
 | `amount`     | number  | Yes      | Donation amount (minimum 0, multiple of 0.01)    |
 | `currency`   | string  | Yes      | ISO 4217 currency code (3 uppercase letters)     |
-| `campaign`   | object  | Yes      | Campaign information (id and German title)      |
+| `campaign`   | object  | Yes      | Campaign information (id and German title)       |
 | `purpose`    | string  | Yes      | Donation purpose or category                     |
 | `donor`      | object  | Yes      | Donor information                                |
 | `payment`    | object  | Yes      | Payment information                              |
@@ -44,10 +44,10 @@ The `donation` object contains detailed information about the completed donation
 
 The `campaign` object contains:
 
-| Field   | Type    | Required | Description                    |
-| ------- | ------- | -------- | ------------------------------ |
-| `id`    | integer | Yes      | Unique campaign identifier     |
-| `title` | string  | Yes      | Campaign title (in German)     |
+| Field   | Type    | Required | Description                |
+| ------- | ------- | -------- | -------------------------- |
+| `id`    | integer | Yes      | Unique campaign identifier |
+| `title` | string  | Yes      | Campaign title (in German) |
 
 ### Donor Information
 
@@ -62,7 +62,7 @@ The `campaign` object contains:
 | `postal_code`   | string | Yes      | Postal code                                                               |
 | `country`       | string | Yes      | ISO 3166-1 alpha-2 country code (2 uppercase letters)                     |
 | `language`      | string | Yes      | Donor's preferred language (ISO 639-1 language code, 2 lowercase letters) |
-| `title`         | string | No       | Donor title (e.g., "Herr", "Frau")                                        |
+| `gender`        | string | No       | Donor gender (`male`, `female`, `non-binary`, `prefer-not-to-say`)        |
 | `company`       | string | No       | Company name                                                              |
 | `po_box`        | string | No       | PO Box                                                                    |
 
@@ -111,7 +111,7 @@ The following payment methods are supported:
       },
       "purpose": "Freie Spende",
       "donor": {
-        "title": "Frau",
+        "gender": "female",
         "first_name": "Jana",
         "last_name": "Dockter",
         "street": "Jubiläumsstrasse",
@@ -193,7 +193,7 @@ The following payment methods are supported:
       },
       "purpose": "Bildungsprojekt",
       "donor": {
-        "title": "Herr",
+        "gender": "male",
         "first_name": "Peter",
         "last_name": "Schmidt",
         "street": "Musterstrasse",

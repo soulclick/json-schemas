@@ -61,11 +61,13 @@ You can validate webhook payloads against the schema using any JSON Schema valid
 Reference the schemas directly from this repository in your integration code:
 
 **Donation webhooks:**
+
 ```
 https://raw.githubusercontent.com/soulclick/json-schemas/main/webhooks/donation-completed.json
 ```
 
 **Shop order webhooks:**
+
 ```
 https://raw.githubusercontent.com/soulclick/json-schemas/main/webhooks/shop-order-completed.json
 ```
