@@ -58,6 +58,7 @@
       },
       "currency": "CHF",
       "amount_subtotal": 60.0,
+      "amount_discount": 5.75,
       "amount_tax": 5.75,
       "amount_total": 72.0,
       "payment": {

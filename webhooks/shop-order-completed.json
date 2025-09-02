@@ -39,6 +39,7 @@
             "invoice_address",
             "currency",
             "amount_subtotal",
+            "amount_discount",
             "amount_tax",
             "amount_total",
             "payment",
@@ -253,7 +254,13 @@
               "type": "number",
               "minimum": 0,
               "multipleOf": 0.01,
-              "description": "Order subtotal before tax and shipping"
+              "description": "Order subtotal (sum of all item amounts)"
+            },
+            "amount_discount": {
+              "type": "number",
+              "minimum": 0,
+              "multipleOf": 0.01,
+              "description": "Total discount amount applied to order"
             },
             "amount_tax": {
               "type": "number",
@@ -265,7 +272,7 @@
               "type": "number",
               "minimum": 0,
               "multipleOf": 0.01,
-              "description": "Total order amount including tax and shipping"
+              "description": "Final total: amount_subtotal - amount_discount + amount_tax + shipping.cost"
             },
             "payment": {
               "type": "object",
@@ -366,6 +373,7 @@
           },
           "currency": "CHF",
           "amount_subtotal": 60.0,
+          "amount_discount": 5.75,
           "amount_tax": 5.75,
           "amount_total": 72.0,
           "payment": {
@@ -433,6 +441,7 @@
           },
           "currency": "CHF",
           "amount_subtotal": 0.0,
+          "amount_discount": 0.0,
           "amount_tax": 0.0,
           "amount_total": 0.0,
           "payment": {

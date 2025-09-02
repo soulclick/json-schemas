@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `language` field to donor object for preferred language (required)
 - Added `invoice` field to donation object for invoice tracking
 - Added shop_order.completed webhook schema with support for both registered users and guest customers
+- Added `amount_discount` field to shop order schema for discount transparency
+- Added comprehensive pricing calculation documentation with formula and examples
 
 ### Changed
 

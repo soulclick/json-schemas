@@ -278,6 +278,42 @@ The following payment methods are supported:
 - Webhook deliveries include retry logic for failed deliveries
 - Verify the webhook signature to ensure payload authenticity
 
+## Pricing Calculation
+
+The order total is calculated using the following formula:
+
+```
+amount_total = amount_subtotal - amount_discount + amount_tax + shipping.cost
+```
+
+### Financial Fields
+
+| Field             | Description                                     | Example |
+| ----------------- | ----------------------------------------------- | ------- |
+| `amount_subtotal` | Sum of all item totals (quantity × unit_amount) | 60.00   |
+| `amount_discount` | Total discount amount applied to order          | 5.75    |
+| `amount_tax`      | Tax amount calculated on discounted subtotal    | 5.75    |
+| `amount_total`    | Final total amount to charge                    | 72.00   |
+| `shipping.cost`   | Shipping cost (included in amount_total)        | 12.00   |
+
+### Calculation Example
+
+For an order with:
+
+- Items subtotal: 60.00 CHF
+- Applied discount: 5.75 CHF
+- Tax (calculated): 5.75 CHF
+- Shipping cost: 12.00 CHF
+
+**Final total**: 60.00 - 5.75 + 5.75 + 12.00 = **72.00 CHF**
+
+### Discount Information
+
+- Discounts are applied at the order level, not per item
+- The `amount_discount` field shows the total discount amount
+- Tax is calculated on the discounted subtotal
+- A value of `0.0` indicates no discounts were applied
+
 ## Related Files
 
 - [JSON Schema](./shop-order-completed.json) - Complete JSON Schema definition
