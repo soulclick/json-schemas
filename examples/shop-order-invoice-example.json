@@ -56,7 +56,6 @@
         "country": "CH"
       },
       "currency": "CHF",
-      "total_price_net": 0.0,
       "total_discount": 0.0,
       "total_vat": 0.0,
       "total_price_gross": 0.0,

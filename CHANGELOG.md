@@ -67,6 +67,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed conditional validation for `invoice` in payment object
 - Removed `order.status` field from shop order schema
 - Removed `canton` and `municipality` fields from shop order addresses
+- Removed `total_price_net` field from shop order schema to simplify pricing calculation
 
 ## [1.0.1] - 2025-08-27
 

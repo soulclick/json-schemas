@@ -37,7 +37,6 @@ The `shop_order` object contains detailed information about the completed order:
 | `delivery_address`  | object | Yes      | Delivery address information                  |
 | `invoice_address`   | object | Yes      | Invoice address information                   |
 | `currency`          | string | Yes      | ISO 4217 currency code (3 uppercase letters)  |
-| `total_price_net`   | number | Yes      | Total price without tax and shipping          |
 | `total_discount`    | number | Yes      | Total discount amount applied to order        |
 | `total_vat`         | number | Yes      | Total VAT/tax amount                          |
 | `total_price_gross` | number | Yes      | Final total including tax and shipping        |
@@ -217,7 +216,6 @@ The following payment method codes are supported (see [Datatrans documentation](
       },
       "currency": "CHF",
       "total_price_gross": 67.0,
-      "total_price_net": 55.56,
       "total_vat": 5.31,
       "total_discount": 5.75,
       "payment": {
@@ -300,7 +298,6 @@ The following payment method codes are supported (see [Datatrans documentation](
       },
       "currency": "CHF",
       "total_price_gross": 0.0,
-      "total_price_net": 0.0,
       "total_vat": 0.0,
       "total_discount": 0.0,
       "payment": {
@@ -333,7 +330,7 @@ The following payment method codes are supported (see [Datatrans documentation](
 The order total is calculated using the following formula:
 
 ```
-total_price_gross = total_price_net - total_discount + total_vat + shipping.cost
+total_price_gross = sum_of_item_totals + total_vat + shipping.cost
 ```
 
 ### Financial Fields
@@ -341,7 +338,6 @@ total_price_gross = total_price_net - total_discount + total_vat + shipping.cost
 | Field               | Description                                   | Example |
 | ------------------- | --------------------------------------------- | ------- |
 | `shipping.cost`     | Shipping cost (included in total_price_gross) | 9.00    |
-| `total_price_net`   | Total price without tax and shipping          | 52.63   |
 | `total_discount`    | Total discount amount applied to order        | 11.65   |
 | `total_vat`         | Total VAT/tax amount                          | 13.27   |
 | `total_price_gross` | Final total including tax and shipping        | 65.90   |
@@ -351,17 +347,16 @@ total_price_gross = total_price_net - total_discount + total_vat + shipping.cost
 For an order with:
 
 - Items subtotal: 60.00 CHF
-- Applied discount: 5.75 CHF
 - Tax (calculated): 5.75 CHF
 - Shipping cost: 12.00 CHF
 
-**Final total**: 52.63 - 11.65 + 13.27 + 9.00 = **65.90 CHF**
+**Final total**: 60.00 + 5.75 + 12.00 = **77.75 CHF**
 
 ### Discount Information
 
 - Discounts are applied at the order level, not per item
 - The `total_discount` field shows the total discount amount
-- Tax is calculated on the discounted subtotal
+- Item totals already reflect any applied discounts
 - A value of `0.0` indicates no discounts were applied
 
 ## Related Files

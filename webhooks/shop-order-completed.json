@@ -39,7 +39,6 @@
             "items",
             "currency",
             "total_price_gross",
-            "total_price_net",
             "total_vat",
             "total_discount",
             "payment",
@@ -307,12 +306,6 @@
               "multipleOf": 0.01,
               "description": "Final total including tax and shipping"
             },
-            "total_price_net": {
-              "type": "number",
-              "minimum": 0,
-              "multipleOf": 0.01,
-              "description": "Total price without tax and shipping"
-            },
             "total_vat": {
               "type": "number",
               "minimum": 0,
@@ -407,16 +400,20 @@
               "description": "Kleber \"Rund um die Welt\"",
               "article_number": "6304",
               "quantity": 12,
-              "unit_amount": 0.0,
-              "amount_total": 0.0
+              "unit_price_net": 0.0,
+              "unit_price_gross": 0.0,
+              "total_price_gross": 0.0,
+              "discount_percentage": 0
             },
             {
               "product_id": 18,
               "description": "Missions-Rosenkranz",
               "article_number": "3598",
               "quantity": 12,
-              "unit_amount": 5.0,
-              "amount_total": 60.0
+              "unit_price_net": 4.63,
+              "unit_price_gross": 5.0,
+              "total_price_gross": 60.0,
+              "discount_percentage": 0
             }
           ],
           "delivery_address": {
@@ -433,7 +430,7 @@
             "country": "CH"
           },
           "invoice_address": {
-            "company_name": "Tech Solutions AG",
+            "company": "Tech Solutions AG",
             "street": "Bahnhofstrasse",
             "street_number": "1",
             "postal_code": "8001",
@@ -441,12 +438,12 @@
             "country": "CH"
           },
           "currency": "CHF",
-          "amount_subtotal": 60.0,
-          "amount_discount": 5.75,
-          "amount_tax": 5.75,
-          "amount_total": 72.0,
+          "total_price_gross": 72.0,
+          "total_vat": 5.75,
+          "total_discount": 5.75,
           "payment": {
-            "method": "twint",
+            "transaction_id": "twi_2708202500000",
+            "method": "TWI",
             "status": "completed"
           },
           "shipping": {
@@ -476,15 +473,17 @@
               "description": "Sample Product",
               "article_number": "9104",
               "quantity": 1,
-              "unit_amount": 0.0,
-              "amount_total": 0.0
+              "unit_price_net": 0.0,
+              "unit_price_gross": 0.0,
+              "total_price_gross": 0.0,
+              "discount_percentage": 0
             }
           ],
           "delivery_address": {
             "gender": "female",
             "first_name": "",
             "last_name": "",
-            "company_name": "Sanela Zeba",
+            "company": "Sanela Zeba",
             "care_of": "",
             "department": "",
             "street": "Büntstrasse",
@@ -498,7 +497,7 @@
             "gender": "female",
             "first_name": "",
             "last_name": "",
-            "company_name": "Sanela Zeba",
+            "company": "Sanela Zeba",
             "care_of": "",
             "department": "",
             "street": "Büntstrasse",
@@ -509,12 +508,12 @@
             "country": "CH"
           },
           "currency": "CHF",
-          "amount_subtotal": 0.0,
-          "amount_discount": 0.0,
-          "amount_tax": 0.0,
-          "amount_total": 0.0,
+          "total_price_gross": 0.0,
+          "total_vat": 0.0,
+          "total_discount": 0.0,
           "payment": {
-            "method": "invoice",
+            "transaction_id": "qr_invoice_EDxGErZgdMJkuAjrVjKw",
+            "method": "INV",
             "status": "pending"
           },
           "shipping": {
