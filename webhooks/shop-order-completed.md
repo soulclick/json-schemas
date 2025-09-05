@@ -20,13 +20,13 @@ The webhook payload follows a consistent structure with event metadata at the ro
 
 The `data` object contains the order information:
 
-| Field   | Type   | Required | Description   |
-| ------- | ------ | -------- | ------------- |
-| `order` | object | Yes      | Order details |
+| Field        | Type   | Required | Description   |
+| ------------ | ------ | -------- | ------------- |
+| `shop_order` | object | Yes      | Order details |
 
 ### Order Properties
 
-The `order` object contains detailed information about the completed order:
+The `shop_order` object contains detailed information about the completed order:
 
 | Field              | Type   | Required | Description                                   |
 | ------------------ | ------ | -------- | --------------------------------------------- |
@@ -37,32 +37,45 @@ The `order` object contains detailed information about the completed order:
 | `delivery_address` | object | Yes      | Delivery address information                  |
 | `invoice_address`  | object | Yes      | Invoice address information                   |
 | `currency`         | string | Yes      | ISO 4217 currency code (3 uppercase letters)  |
-| `amount_subtotal`  | number | Yes      | Order subtotal before tax and shipping        |
-| `amount_tax`       | number | Yes      | Tax amount                                    |
-| `amount_total`     | number | Yes      | Total order amount including tax and shipping |
+| `total_price_net`   | number | Yes      | Total price without tax                       |
+| `total_discount`    | number | Yes      | Total discount amount applied to order        |
+| `total_vat`         | number | Yes      | Total VAT/tax amount                          |
+| `total_price_gross` | number | Yes      | Final total including tax and shipping        |
 | `payment`          | object | Yes      | Payment information                           |
 | `shipping`         | object | Yes      | Shipping information                          |
 
 ### Customer Information
 
-| Field      | Type   | Required | Description                                                                  |
-| ---------- | ------ | -------- | ---------------------------------------------------------------------------- |
-| `type`     | string | Yes      | Customer type (`registered` or `guest`)                                      |
-| `email`    | string | Yes      | Customer email address (valid email format)                                  |
-| `language` | string | Yes      | Customer's preferred language (ISO 639-1 language code, 2 lowercase letters) |
+| Field           | Type         | Required | Description                                                                  |
+| --------------- | ------------ | -------- | ---------------------------------------------------------------------------- |
+| `gender`        | string       | No       | Gender (`male`, `female`, `non-binary`, `prefer-not-to-say`)                 |
+| `first_name`    | string       | No       | First name                                                                   |
+| `last_name`     | string       | No       | Last name                                                                    |
+| `email`         | string       | Yes      | Customer email address (valid email format)                                  |
+| `phone`         | string/null  | No       | Customer phone number                                                        |
+| `company`       | string       | No       | Company name                                                                 |
+| `department`    | string       | No       | Department                                                                   |
+| `care_of`       | string       | No       | Care of / attention to (z.Hd.)                                               |
+| `po_box`        | string       | No       | PO Box                                                                       |
+| `street`        | string       | Yes      | Street name                                                                  |
+| `street_number` | string       | Yes      | Street number                                                                |
+| `postal_code`   | string       | Yes      | Postal code                                                                  |
+| `city`          | string       | Yes      | City                                                                         |
+| `country`       | string       | Yes      | ISO 3166-1 alpha-2 country code (2 uppercase letters)                        |
+| `language`      | string       | Yes      | Customer's preferred language (ISO 639-1 language code, 2 lowercase letters) |
 
 ### Item Information
 
 Each item in the `items` array contains:
 
-| Field            | Type    | Required | Description                                          |
-| ---------------- | ------- | -------- | ---------------------------------------------------- |
-| `product_id`     | integer | Yes      | Product identifier                                   |
-| `description`    | string  | Yes      | Product name or description                          |
-| `quantity`       | integer | Yes      | Quantity ordered (minimum 1)                         |
-| `unit_amount`    | number  | Yes      | Unit price per item                                  |
-| `amount_total`   | number  | Yes      | Total amount for this item (quantity \* unit_amount) |
-| `article_number` | string  | No       | Article number                                       |
+| Field                 | Type    | Required | Description                                          |
+| --------------------- | ------- | -------- | ---------------------------------------------------- |
+| `article_number`      | string  | Yes      | Article number                                       |
+| `quantity`            | integer | Yes      | Quantity ordered (minimum 1)                         |
+| `unit_price_net`      | number  | Yes      | Unit price without tax                               |
+| `unit_price_gross`    | number  | Yes      | Unit price including tax                             |
+| `total_price_gross`   | number  | Yes      | Total price for this item including tax              |
+| `discount_percentage` | number  | No       | Discount percentage applied to this item             |
 
 ### Address Information
 
@@ -70,35 +83,49 @@ Both `delivery_address` and `invoice_address` have the same structure:
 
 | Field           | Type   | Required | Description                                           |
 | --------------- | ------ | -------- | ----------------------------------------------------- |
+| `first_name`    | string | No       | First name                                            |
+| `last_name`     | string | No       | Last name                                             |
+| `company`       | string | No       | Company name                                          |
+| `department`    | string | No       | Department                                            |
+| `care_of`       | string | No       | Care of / attention to (z.Hd.)                        |
+| `po_box`        | string | No       | PO Box                                                |
 | `street`        | string | Yes      | Street name                                           |
 | `street_number` | string | Yes      | Street number                                         |
 | `postal_code`   | string | Yes      | Postal code                                           |
 | `city`          | string | Yes      | City                                                  |
 | `country`       | string | Yes      | ISO 3166-1 alpha-2 country code (2 uppercase letters) |
-| `title`         | string | No       | Title (e.g., "Herr", "Frau")                          |
-| `first_name`    | string | No       | First name                                            |
-| `last_name`     | string | No       | Last name                                             |
-| `company_name`  | string | No       | Company name                                          |
-| `care_of`       | string | No       | Care of / attention to (z.Hd.)                        |
-| `department`    | string | No       | Department                                            |
-| `po_box`        | string | No       | PO Box                                                |
 
 ### Payment Information
 
-| Field    | Type   | Required | Description         |
-| -------- | ------ | -------- | ------------------- |
-| `method` | string | Yes      | Payment method used |
-| `status` | string | Yes      | Payment status      |
+| Field            | Type   | Required | Description                             |
+| ---------------- | ------ | -------- | --------------------------------------- |
+| `transaction_id` | string | Yes      | Payment processor transaction identifier |
+| `method`         | string | Yes      | Payment method used                     |
+| `status`         | string | Yes      | Payment status                          |
 
 #### Payment Methods
 
-The following payment methods are supported:
+The following payment method codes are supported (see [Datatrans documentation](https://docs.datatrans.ch/docs/payment-methods)):
 
-- `twint` - TWINT mobile payment
-- `visa` - Visa credit card
-- `mastercard` - Mastercard credit card
-- `postfinance` - PostFinance payment
-- `invoice` - Invoice payment
+- `TWI` - TWINT mobile payment
+- `PAY` - Google Pay
+- `PFC` - PostFinance Card
+- `PEF` - PostFinance E-Finance
+- `VIS` - Visa credit card
+- `ECA` - MasterCard
+- `APL` - Apple Pay
+- `PAP` - PayPal
+- `INV` - Invoice payment
+- `AMX` - American Express
+- `ALP` - Alipay+
+- `AZP` - Amazon Pay
+- `CFY` - Cofidis Pay
+- `KLN` - Klarna
+- `DIB` - Diners Club
+- `PSC` - Paysafecard
+- `REK` - Reka
+- `SAM` - Samsung Pay
+- `ELV` - SEPA
 
 #### Payment Status
 
@@ -110,8 +137,8 @@ The following payment methods are supported:
 
 | Field    | Type   | Required | Description     |
 | -------- | ------ | -------- | --------------- |
-| `method` | string | Yes      | Shipping method |
 | `cost`   | number | Yes      | Shipping cost   |
+| `method` | string | Yes      | Shipping method |
 
 ## Example Payloads
 
@@ -124,37 +151,17 @@ The following payment methods are supported:
   "created_at": "2025-08-29T14:04:39Z",
   "environment": "prod",
   "data": {
-    "order": {
+    "shop_order": {
       "id": "2708202500000",
       "created_at": "2025-08-27T13:17:47Z",
       "customer": {
-        "type": "guest",
         "email": "myriam.udry@gmail.com",
-        "language": "fr"
-      },
-      "items": [
-        {
-          "product_id": 86,
-          "description": "Kleber \"Rund um die Welt\"",
-          "article_number": "6304",
-          "quantity": 12,
-          "unit_amount": 0.0,
-          "amount_total": 0.0
-        },
-        {
-          "product_id": 18,
-          "description": "Missions-Rosenkranz",
-          "article_number": "3598",
-          "quantity": 12,
-          "unit_amount": 5.0,
-          "amount_total": 60.0
-        }
-      ],
-      "delivery_address": {
-        "title": "Frau",
+        "phone": null,
+        "language": "fr",
+        "gender": "female",
         "first_name": "Myriam",
         "last_name": "Udry",
-        "company_name": "",
+        "company": "",
         "care_of": "",
         "department": "",
         "street": "Chemin des Courtis",
@@ -164,31 +171,63 @@ The following payment methods are supported:
         "city": "Daillon",
         "country": "CH"
       },
+      "items": [
+        {
+          "article_number": "6304",
+          "quantity": 12,
+          "unit_price_net": 0.0,
+          "unit_price_gross": 0.0,
+          "discount_percentage": 0,
+          "total_price_gross": 0.0
+        },
+        {
+          "article_number": "3598",
+          "quantity": 12,
+          "unit_price_net": 4.63,
+          "unit_price_gross": 5.0,
+          "discount_percentage": 0,
+          "total_price_gross": 60.0
+        }
+      ],
+      "delivery_address": {
+        "first_name": "Myriam",
+        "last_name": "Udry",
+        "company": "",
+        "department": "",
+        "care_of": "",
+        "po_box": "",
+        "street": "Chemin des Courtis",
+        "street_number": "2a",
+        "postal_code": "1976",
+        "city": "Daillon",
+        "country": "CH"
+      },
       "invoice_address": {
-        "title": "",
         "first_name": "",
         "last_name": "",
-        "company_name": "",
-        "care_of": "",
+        "company": "",
         "department": "",
-        "street": "",
-        "street_number": "",
+        "care_of": "",
         "po_box": "",
-        "postal_code": "",
-        "city": "",
+        "street": "Chemin des Courtis",
+        "street_number": "2a",
+        "postal_code": "1976",
+        "city": "Daillon",
         "country": "CH"
       },
       "currency": "CHF",
-      "amount_subtotal": 60.0,
-      "amount_tax": 5.75,
-      "amount_total": 72.0,
+      "total_price_gross": 67.0,
+      "total_price_net": 55.56,
+      "total_vat": 5.31,
+      "total_discount": 5.75,
       "payment": {
-        "method": "twint",
+        "transaction_id": "twi_2708202500000",
+        "method": "TWI",
         "status": "completed"
       },
       "shipping": {
-        "method": "Service-Pauschale B-Post Paket",
-        "cost": 12.0
+        "cost": 12.0,
+        "method": "Service-Pauschale B-Post Paket"
       }
     }
   }
@@ -204,63 +243,74 @@ The following payment methods are supported:
   "created_at": "2025-08-29T15:22:15Z",
   "environment": "prod",
   "data": {
-    "order": {
+    "shop_order": {
       "id": "2708202500002",
       "created_at": "2025-08-27T16:37:20Z",
       "customer": {
-        "type": "registered",
         "email": "sanela.zeba@kath-berneck.ch",
-        "language": "de"
-      },
-      "items": [
-        {
-          "product_id": 45,
-          "description": "Sample Product",
-          "article_number": "9104",
-          "quantity": 1,
-          "unit_amount": 0.0,
-          "amount_total": 0.0
-        }
-      ],
-      "delivery_address": {
-        "title": "Frau",
+        "phone": null,
+        "language": "de",
         "first_name": "",
         "last_name": "",
-        "company_name": "Sanela Zeba",
+        "company": "Sanela Zeba",
         "care_of": "",
         "department": "",
         "street": "Büntstrasse",
         "street_number": "4",
         "po_box": "",
+        "postal_code": "9442",
+        "city": "Berneck",
+        "country": "CH"
+      },
+      "items": [
+        {
+          "article_number": "9104",
+          "quantity": 1,
+          "unit_price_net": 0.0,
+          "unit_price_gross": 0.0,
+          "discount_percentage": 0,
+          "total_price_gross": 0.0
+        }
+      ],
+      "delivery_address": {
+        "first_name": "",
+        "last_name": "",
+        "company": "Sanela Zeba",
+        "department": "",
+        "care_of": "",
+        "po_box": "",
+        "street": "Büntstrasse",
+        "street_number": "4",
         "postal_code": "9442",
         "city": "Berneck",
         "country": "CH"
       },
       "invoice_address": {
-        "title": "Frau",
         "first_name": "",
         "last_name": "",
-        "company_name": "Sanela Zeba",
-        "care_of": "",
+        "company": "Sanela Zeba",
         "department": "",
+        "care_of": "",
+        "po_box": "",
         "street": "Büntstrasse",
         "street_number": "4",
-        "po_box": "",
         "postal_code": "9442",
         "city": "Berneck",
         "country": "CH"
       },
       "currency": "CHF",
-      "amount_subtotal": 0.0,
-      "amount_tax": 0.0,
-      "amount_total": 0.0,
+      "total_price_gross": 0.0,
+      "total_price_net": 0.0,
+      "total_vat": 0.0,
+      "total_discount": 0.0,
       "payment": {
-        "method": "invoice",
+        "transaction_id": "qr-2708202500002",
+        "method": "INV",
         "status": "pending"
       },
       "shipping": {
-        "method": "Service-Pauschale B-Post Paket",
-        "cost": 0.0
+        "cost": 0.0,
+        "method": "Service-Pauschale B-Post Paket"
       }
     }
   }
@@ -283,18 +333,18 @@ The following payment methods are supported:
 The order total is calculated using the following formula:
 
 ```
-amount_total = amount_subtotal - amount_discount + amount_tax + shipping.cost
+total_price_gross = total_price_net - total_discount + total_vat + shipping.cost
 ```
 
 ### Financial Fields
 
-| Field             | Description                                     | Example |
-| ----------------- | ----------------------------------------------- | ------- |
-| `amount_subtotal` | Sum of all item totals (quantity × unit_amount) | 60.00   |
-| `amount_discount` | Total discount amount applied to order          | 5.75    |
-| `amount_tax`      | Tax amount calculated on discounted subtotal    | 5.75    |
-| `amount_total`    | Final total amount to charge                    | 72.00   |
-| `shipping.cost`   | Shipping cost (included in amount_total)        | 12.00   |
+| Field               | Description                                          | Example |
+| ------------------- | ---------------------------------------------------- | ------- |
+| `total_price_net`   | Total price without tax                              | 52.63   |
+| `total_discount`    | Total discount amount applied to order               | 11.65   |
+| `total_vat`         | Total VAT/tax amount                                 | 13.27   |
+| `total_price_gross` | Final total including tax and shipping               | 65.90   |
+| `shipping.cost`     | Shipping cost (included in total_price_gross)        | 9.00    |
 
 ### Calculation Example
 
@@ -305,12 +355,12 @@ For an order with:
 - Tax (calculated): 5.75 CHF
 - Shipping cost: 12.00 CHF
 
-**Final total**: 60.00 - 5.75 + 5.75 + 12.00 = **72.00 CHF**
+**Final total**: 52.63 - 11.65 + 13.27 + 9.00 = **65.90 CHF**
 
 ### Discount Information
 
 - Discounts are applied at the order level, not per item
-- The `amount_discount` field shows the total discount amount
+- The `total_discount` field shows the total discount amount
 - Tax is calculated on the discounted subtotal
 - A value of `0.0` indicates no discounts were applied
 

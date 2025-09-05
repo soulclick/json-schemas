@@ -4,36 +4,49 @@
   "created_at": "2025-08-29T16:30:22Z",
   "environment": "prod",
   "data": {
-    "order": {
+    "shop_order": {
       "id": "2708202500003",
       "created_at": "2025-08-29T15:45:10Z",
       "customer": {
-        "type": "registered",
         "email": "peter.mueller@example.ch",
-        "language": "de"
+        "phone": null,
+        "language": "de",
+        "gender": "male",
+        "first_name": "Peter",
+        "last_name": "Müller",
+        "company": "",
+        "care_of": "",
+        "department": "",
+        "street": "Musterstrasse",
+        "street_number": "42",
+        "po_box": "",
+        "postal_code": "8001",
+        "city": "Zürich",
+        "country": "CH"
       },
       "items": [
         {
-          "product_id": 42,
-          "description": "Schweizer Kreuz Anhänger",
           "article_number": "3421",
           "quantity": 1,
-          "unit_amount": 29.9,
-          "amount_total": 29.9
+          "unit_price_net": 27.69,
+          "unit_price_gross": 29.9,
+          "total_price_gross": 29.9,
+          "discount_percentage": 0
         },
         {
-          "product_id": 58,
-          "description": "Gebetskette Holz",
           "article_number": "4789",
           "quantity": 2,
-          "unit_amount": 15.5,
-          "amount_total": 31.0
+          "unit_price_net": 14.35,
+          "unit_price_gross": 15.5,
+          "total_price_gross": 31.0,
+          "discount_percentage": 0
         }
       ],
       "delivery_address": {
         "gender": "male",
         "first_name": "Peter",
         "last_name": "Müller",
+        "company": "",
         "care_of": "",
         "department": "",
         "street": "Musterstrasse",
@@ -47,6 +60,7 @@
         "gender": "male",
         "first_name": "Peter",
         "last_name": "Müller",
+        "company": "",
         "care_of": "",
         "department": "",
         "street": "Musterstrasse",
@@ -57,17 +71,18 @@
         "country": "CH"
       },
       "currency": "CHF",
-      "amount_subtotal": 60.9,
-      "amount_discount": 0.0,
-      "amount_tax": 4.87,
-      "amount_total": 73.77,
+      "total_price_net": 56.39,
+      "total_discount": 0.0,
+      "total_vat": 4.51,
+      "total_price_gross": 68.9,
       "payment": {
-        "method": "visa",
+        "transaction_id": "vis_2708202500003",
+        "method": "VIS",
         "status": "completed"
       },
       "shipping": {
-        "method": "Standard Versand",
-        "cost": 8.0
+        "cost": 8.0,
+        "method": "Standard Versand"
       }
     }
   }

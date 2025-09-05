@@ -19,6 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added comprehensive pricing calculation documentation with formula and examples
 - Added `newsletter` field to donor object to indicate newsletter opt-in status
 - Added `transaction_id` field to payment object for payment processor transaction tracking
+- Added full address fields to shop order customer object
+- Added `phone` field to shop order customer object
+- Added `discount_percentage` field to shop order items
 
 ### Changed
 
@@ -44,12 +47,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Flattened shipping structure: replaced nested `shipment` object with flat `shipping_method` and `shipping_cost` fields
 - Reordered order fields for logical flow: metadata → customer → items → addresses → financial summary → transaction details
 - Updated shop order payment object to match donation schema with required `status` field
-- Removed `payment.transaction_id` field from shop order schema (later re-added to donation schema)
+- Re-added `transaction_id` field to both donation and shop order payment objects
 - Made address fields properly required: `street`, `street_number`, `postal_code`, `city`, `country`
 - Added `amount_subtotal` field to order for financial transparency
-- Updated payment methods to use Datatrans codes (TWI, PAY, PFC, PEF, VIS, ECA, APL, PAP, INV, AMX, ALP, AZP, CFY, KLN, DIB, PSC, REK, SAM, ELV)
+- Updated payment methods to use Datatrans codes (TWI, PAY, PFC, PEF, VIS, ECA, APL, PAP, INV, AMX, ALP, AZP, CFY, KLN, DIB, PSC, REK, SAM, ELV) for both donation and shop order schemas
 - Changed donation ID from integer to string for better compatibility
 - Made donation `purpose` field optional (can be null)
+- Changed shop order wrapper from `order` to `shop_order` for consistency
+- Updated shop order item fields: `unit_amount` → `unit_price_net` and `unit_price_gross`, `amount_total` → `total_price_gross`
+- Updated shop order financial fields: `amount_subtotal` → `total_price_net`, `amount_discount` → `total_discount`, `amount_tax` → `total_vat`, `amount_total` → `total_price_gross`
+- Changed address field `company_name` to `company` for consistency across schemas
+- Removed `type` field from shop order customer object
+- Reordered shipping object properties (cost, method) for consistency
+- Reordered field definitions to match Django serializer field ordering for better maintainability
 
 ### Removed
 

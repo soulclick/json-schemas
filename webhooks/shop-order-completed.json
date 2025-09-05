@@ -26,22 +26,22 @@
     },
     "data": {
       "type": "object",
-      "required": ["order"],
+      "required": ["shop_order"],
       "properties": {
-        "order": {
+        "shop_order": {
           "type": "object",
           "required": [
             "id",
             "created_at",
             "customer",
-            "items",
-            "delivery_address",
             "invoice_address",
+            "delivery_address",
+            "items",
             "currency",
-            "amount_subtotal",
-            "amount_discount",
-            "amount_tax",
-            "amount_total",
+            "total_price_gross",
+            "total_price_net",
+            "total_vat",
+            "total_discount",
             "payment",
             "shipping"
           ],
@@ -57,17 +57,66 @@
             },
             "customer": {
               "type": "object",
-              "required": ["type", "email", "language"],
+              "required": ["email", "language", "street", "street_number", "postal_code", "city", "country"],
               "properties": {
-                "type": {
+                "gender": {
                   "type": "string",
-                  "enum": ["registered", "guest"],
-                  "description": "Customer type - registered user or guest"
+                  "enum": ["male", "female", "non-binary", "prefer-not-to-say"],
+                  "description": "Customer gender (optional)"
+                },
+                "first_name": {
+                  "type": "string",
+                  "description": "First name"
+                },
+                "last_name": {
+                  "type": "string",
+                  "description": "Last name"
                 },
                 "email": {
                   "type": "string",
                   "format": "email",
                   "description": "Customer email address"
+                },
+                "phone": {
+                  "type": ["string", "null"],
+                  "description": "Customer phone number"
+                },
+                "company": {
+                  "type": "string",
+                  "description": "Company name (optional)"
+                },
+                "department": {
+                  "type": "string",
+                  "description": "Department (optional)"
+                },
+                "care_of": {
+                  "type": "string",
+                  "description": "Care of / attention to (z.Hd.) - optional"
+                },
+                "po_box": {
+                  "type": "string",
+                  "description": "PO Box (optional)"
+                },
+                "street": {
+                  "type": "string",
+                  "description": "Street name"
+                },
+                "street_number": {
+                  "type": "string",
+                  "description": "Street number"
+                },
+                "postal_code": {
+                  "type": "string",
+                  "description": "Postal code"
+                },
+                "city": {
+                  "type": "string",
+                  "description": "City"
+                },
+                "country": {
+                  "type": "string",
+                  "pattern": "^[A-Z]{2}$",
+                  "description": "ISO 3166-1 alpha-2 country code"
                 },
                 "language": {
                   "type": "string",
@@ -82,21 +131,13 @@
               "items": {
                 "type": "object",
                 "required": [
-                  "product_id",
-                  "description",
+                  "article_number",
                   "quantity",
-                  "unit_amount",
-                  "amount_total"
+                  "unit_price_net",
+                  "unit_price_gross",
+                  "total_price_gross"
                 ],
                 "properties": {
-                  "product_id": {
-                    "type": "integer",
-                    "description": "Product identifier"
-                  },
-                  "description": {
-                    "type": "string",
-                    "description": "Product name or description"
-                  },
                   "article_number": {
                     "type": "string",
                     "description": "Article number"
@@ -106,17 +147,29 @@
                     "minimum": 1,
                     "description": "Quantity ordered"
                   },
-                  "unit_amount": {
+                  "unit_price_net": {
                     "type": "number",
                     "minimum": 0,
                     "multipleOf": 0.01,
-                    "description": "Unit price per item"
+                    "description": "Unit price without tax"
                   },
-                  "amount_total": {
+                  "unit_price_gross": {
                     "type": "number",
                     "minimum": 0,
                     "multipleOf": 0.01,
-                    "description": "Total amount for this item (quantity * unit_amount)"
+                    "description": "Unit price including tax"
+                  },
+                  "discount_percentage": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "description": "Discount percentage applied to this item"
+                  },
+                  "total_price_gross": {
+                    "type": "number",
+                    "minimum": 0,
+                    "multipleOf": 0.01,
+                    "description": "Total price for this item including tax"
                   }
                 }
               }
@@ -131,11 +184,6 @@
                 "country"
               ],
               "properties": {
-                "gender": {
-                  "type": "string",
-                  "enum": ["male", "female", "non-binary", "prefer-not-to-say"],
-                  "description": "Gender (optional)"
-                },
                 "first_name": {
                   "type": "string",
                   "description": "First name"
@@ -144,17 +192,21 @@
                   "type": "string",
                   "description": "Last name"
                 },
-                "company_name": {
+                "company": {
                   "type": "string",
                   "description": "Company name (optional)"
+                },
+                "department": {
+                  "type": "string",
+                  "description": "Department (optional)"
                 },
                 "care_of": {
                   "type": "string",
                   "description": "Care of / attention to (z.Hd.) - optional"
                 },
-                "department": {
+                "po_box": {
                   "type": "string",
-                  "description": "Department (optional)"
+                  "description": "PO Box (optional)"
                 },
                 "street": {
                   "type": "string",
@@ -163,10 +215,6 @@
                 "street_number": {
                   "type": "string",
                   "description": "Street number"
-                },
-                "po_box": {
-                  "type": "string",
-                  "description": "PO Box (optional)"
                 },
                 "postal_code": {
                   "type": "string",
@@ -193,11 +241,6 @@
                 "country"
               ],
               "properties": {
-                "gender": {
-                  "type": "string",
-                  "enum": ["male", "female", "non-binary", "prefer-not-to-say"],
-                  "description": "Gender (optional)"
-                },
                 "first_name": {
                   "type": "string",
                   "description": "First name"
@@ -206,17 +249,21 @@
                   "type": "string",
                   "description": "Last name"
                 },
-                "company_name": {
+                "company": {
                   "type": "string",
                   "description": "Company name (optional)"
+                },
+                "department": {
+                  "type": "string",
+                  "description": "Department (optional)"
                 },
                 "care_of": {
                   "type": "string",
                   "description": "Care of / attention to (z.Hd.) - optional"
                 },
-                "department": {
+                "po_box": {
                   "type": "string",
-                  "description": "Department (optional)"
+                  "description": "PO Box (optional)"
                 },
                 "street": {
                   "type": "string",
@@ -225,10 +272,6 @@
                 "street_number": {
                   "type": "string",
                   "description": "Street number"
-                },
-                "po_box": {
-                  "type": "string",
-                  "description": "PO Box (optional)"
                 },
                 "postal_code": {
                   "type": "string",
@@ -250,44 +293,62 @@
               "pattern": "^[A-Z]{3}$",
               "description": "ISO 4217 currency code"
             },
-            "amount_subtotal": {
+            "total_price_gross": {
               "type": "number",
               "minimum": 0,
               "multipleOf": 0.01,
-              "description": "Order subtotal (sum of all item amounts)"
+              "description": "Final total including tax and shipping"
             },
-            "amount_discount": {
+            "total_price_net": {
+              "type": "number",
+              "minimum": 0,
+              "multipleOf": 0.01,
+              "description": "Total price without tax"
+            },
+            "total_vat": {
+              "type": "number",
+              "minimum": 0,
+              "multipleOf": 0.01,
+              "description": "Total VAT/tax amount"
+            },
+            "total_discount": {
               "type": "number",
               "minimum": 0,
               "multipleOf": 0.01,
               "description": "Total discount amount applied to order"
             },
-            "amount_tax": {
-              "type": "number",
-              "minimum": 0,
-              "multipleOf": 0.01,
-              "description": "Tax amount"
-            },
-            "amount_total": {
-              "type": "number",
-              "minimum": 0,
-              "multipleOf": 0.01,
-              "description": "Final total: amount_subtotal - amount_discount + amount_tax + shipping.cost"
-            },
             "payment": {
               "type": "object",
-              "required": ["method", "status"],
+              "required": ["transaction_id", "method", "status"],
               "properties": {
+                "transaction_id": {
+                  "type": "string",
+                  "description": "Payment processor transaction identifier"
+                },
                 "method": {
                   "type": "string",
                   "enum": [
-                    "twint",
-                    "visa",
-                    "mastercard",
-                    "postfinance",
-                    "invoice"
+                    "TWI",
+                    "PAY",
+                    "PFC",
+                    "PEF",
+                    "VIS",
+                    "ECA",
+                    "APL",
+                    "PAP",
+                    "INV",
+                    "AMX",
+                    "ALP",
+                    "AZP",
+                    "CFY",
+                    "KLN",
+                    "DIB",
+                    "PSC",
+                    "REK",
+                    "SAM",
+                    "ELV"
                   ],
-                  "description": "Payment method used"
+                  "description": "Payment method code (see https://docs.datatrans.ch/docs/payment-methods)"
                 },
                 "status": {
                   "type": "string",
@@ -298,17 +359,17 @@
             },
             "shipping": {
               "type": "object",
-              "required": ["method", "cost"],
+              "required": ["cost", "method"],
               "properties": {
-                "method": {
-                  "type": "string",
-                  "description": "Shipping method"
-                },
                 "cost": {
                   "type": "number",
                   "minimum": 0,
                   "multipleOf": 0.01,
                   "description": "Shipping cost"
+                },
+                "method": {
+                  "type": "string",
+                  "description": "Shipping method"
                 }
               }
             }
@@ -324,7 +385,7 @@
       "created_at": "2025-08-29T14:04:39Z",
       "environment": "prod",
       "data": {
-        "order": {
+        "shop_order": {
           "id": "2708202500000",
           "created_at": "2025-08-27T13:17:47Z",
           "customer": {
@@ -393,7 +454,7 @@
       "created_at": "2025-08-29T15:22:15Z",
       "environment": "prod",
       "data": {
-        "order": {
+        "shop_order": {
           "id": "2708202500002",
           "created_at": "2025-08-27T16:37:20Z",
           "customer": {
