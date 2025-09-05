@@ -16,8 +16,8 @@
       "purpose": null,
       "donor": {
         "gender": "male",
-        "first_name": "Peter",
-        "last_name": "Schmidt",
+        "first_name": "Thomas",
+        "last_name": "Weber",
         "street": "Musterstrasse",
         "street_number": "42",
         "po_box": "Postfach 1234",
@@ -26,7 +26,7 @@
         "country": "CH",
         "language": "fr",
         "newsletter": false,
-        "email": "peter.schmidt@company.ch"
+        "email": "thomas.weber@example.com"
       },
       "payment": {
         "transaction_id": "qr_invoice_EDxGErZgdMJkuAjrVjKw",

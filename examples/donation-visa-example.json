@@ -15,8 +15,8 @@
       },
       "purpose": "Tierpatenschaft",
       "donor": {
-        "first_name": "Max",
-        "last_name": "Müller",
+        "first_name": "Hans",
+        "last_name": "Schmidt",
         "company": "Tech Solutions AG",
         "street": "Bahnhofstrasse",
         "street_number": "1",
@@ -25,7 +25,7 @@
         "country": "CH",
         "language": "de",
         "newsletter": true,
-        "email": "max.mueller@example.ch"
+        "email": "hans.schmidt@example.com"
       },
       "payment": {
         "transaction_id": "250905134230553498",

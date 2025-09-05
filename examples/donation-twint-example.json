@@ -16,8 +16,8 @@
       "purpose": "Freie Spende",
       "donor": {
         "gender": "female",
-        "first_name": "Jana",
-        "last_name": "Dockter",
+        "first_name": "Maria",
+        "last_name": "Muster",
         "street": "Jubiläumsstrasse",
         "street_number": "23",
         "city": "Bern",
@@ -25,7 +25,7 @@
         "country": "CH",
         "language": "de",
         "newsletter": false,
-        "email": "janadockter@web.de"
+        "email": "maria.muster@example.com"
       },
       "payment": {
         "transaction_id": "twi_123456789",

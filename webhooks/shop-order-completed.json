@@ -57,7 +57,15 @@
             },
             "customer": {
               "type": "object",
-              "required": ["email", "language", "street", "street_number", "postal_code", "city", "country"],
+              "required": [
+                "email",
+                "language",
+                "street",
+                "street_number",
+                "postal_code",
+                "city",
+                "country"
+              ],
               "properties": {
                 "gender": {
                   "type": "string",
@@ -303,7 +311,7 @@
               "type": "number",
               "minimum": 0,
               "multipleOf": 0.01,
-              "description": "Total price without tax"
+              "description": "Total price without tax and shipping"
             },
             "total_vat": {
               "type": "number",

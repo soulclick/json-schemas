@@ -28,17 +28,17 @@ The `data` object contains the donation information:
 
 The `donation` object contains detailed information about the completed donation:
 
-| Field        | Type    | Required | Description                                      |
-| ------------ | ------- | -------- | ------------------------------------------------ |
-| `id`         | string  | Yes      | Unique donation identifier                       |
-| `created_at` | string  | Yes      | ISO 8601 timestamp when the donation was created |
-| `amount`     | number  | Yes      | Donation amount (minimum 0, multiple of 0.01)    |
-| `currency`   | string  | Yes      | ISO 4217 currency code (3 uppercase letters)     |
-| `campaign`   | object  | Yes      | Campaign information (id and German title)       |
-| `purpose`    | string  | No       | Donation purpose or category                     |
-| `donor`      | object  | Yes      | Donor information                                |
-| `payment`    | object  | Yes      | Payment information                              |
-| `invoice`    | string  | No       | Invoice number (null for non-invoice payments)   |
+| Field        | Type   | Required | Description                                      |
+| ------------ | ------ | -------- | ------------------------------------------------ |
+| `id`         | string | Yes      | Unique donation identifier                       |
+| `created_at` | string | Yes      | ISO 8601 timestamp when the donation was created |
+| `amount`     | number | Yes      | Donation amount (minimum 0, multiple of 0.01)    |
+| `currency`   | string | Yes      | ISO 4217 currency code (3 uppercase letters)     |
+| `campaign`   | object | Yes      | Campaign information (id and German title)       |
+| `purpose`    | string | No       | Donation purpose or category                     |
+| `donor`      | object | Yes      | Donor information                                |
+| `payment`    | object | Yes      | Payment information                              |
+| `invoice`    | string | No       | Invoice number (null for non-invoice payments)   |
 
 ### Campaign Properties
 
@@ -51,29 +51,29 @@ The `campaign` object contains:
 
 ### Donor Information
 
-| Field           | Type   | Required | Description                                                               |
-| --------------- | ------ | -------- | ------------------------------------------------------------------------- |
-| `first_name`    | string | Yes      | Donor first name (minimum 1 character)                                    |
-| `last_name`     | string | Yes      | Donor last name (minimum 1 character)                                     |
-| `email`         | string | Yes      | Donor email address (valid email format)                                  |
-| `street`        | string | Yes      | Street name                                                               |
-| `street_number` | string | Yes      | Street number                                                             |
-| `city`          | string | Yes      | City                                                                      |
-| `postal_code`   | string | Yes      | Postal code                                                               |
+| Field           | Type    | Required | Description                                                               |
+| --------------- | ------- | -------- | ------------------------------------------------------------------------- |
+| `first_name`    | string  | Yes      | Donor first name (minimum 1 character)                                    |
+| `last_name`     | string  | Yes      | Donor last name (minimum 1 character)                                     |
+| `email`         | string  | Yes      | Donor email address (valid email format)                                  |
+| `street`        | string  | Yes      | Street name                                                               |
+| `street_number` | string  | Yes      | Street number                                                             |
+| `city`          | string  | Yes      | City                                                                      |
+| `postal_code`   | string  | Yes      | Postal code                                                               |
 | `country`       | string  | Yes      | ISO 3166-1 alpha-2 country code (2 uppercase letters)                     |
 | `language`      | string  | Yes      | Donor's preferred language (ISO 639-1 language code, 2 lowercase letters) |
-| `newsletter`    | boolean | No       | Whether the donor opted in for the newsletter                              |
+| `newsletter`    | boolean | No       | Whether the donor opted in for the newsletter                             |
 | `gender`        | string  | No       | Donor gender (`male`, `female`, `non-binary`, `prefer-not-to-say`)        |
 | `company`       | string  | No       | Company name                                                              |
 | `po_box`        | string  | No       | PO Box                                                                    |
 
 ### Payment Information
 
-| Field            | Type   | Required | Description                             |
-| ---------------- | ------ | -------- | --------------------------------------- |
+| Field            | Type   | Required | Description                              |
+| ---------------- | ------ | -------- | ---------------------------------------- |
 | `transaction_id` | string | Yes      | Payment processor transaction identifier |
-| `method`         | string | Yes      | Payment method used                     |
-| `status`         | string | Yes      | Payment status                          |
+| `method`         | string | Yes      | Payment method used                      |
+| `status`         | string | Yes      | Payment status                           |
 
 #### Payment Methods
 
@@ -128,8 +128,8 @@ The following payment method codes are supported (see [Datatrans documentation](
       "purpose": "Freie Spende",
       "donor": {
         "gender": "female",
-        "first_name": "Jana",
-        "last_name": "Dockter",
+        "first_name": "Maria",
+        "last_name": "Muster",
         "street": "Jubiläumsstrasse",
         "street_number": "23",
         "city": "Bern",
@@ -137,7 +137,7 @@ The following payment method codes are supported (see [Datatrans documentation](
         "country": "CH",
         "language": "de",
         "newsletter": false,
-        "email": "janadockter@web.de"
+        "email": "maria.muster@example.com"
       },
       "payment": {
         "transaction_id": "twi_123456789",
@@ -170,8 +170,8 @@ The following payment method codes are supported (see [Datatrans documentation](
       },
       "purpose": "Tierpatenschaft",
       "donor": {
-        "first_name": "Max",
-        "last_name": "Müller",
+        "first_name": "Hans",
+        "last_name": "Schmidt",
         "company": "Tech Solutions AG",
         "street": "Bahnhofstrasse",
         "street_number": "1",
@@ -180,7 +180,7 @@ The following payment method codes are supported (see [Datatrans documentation](
         "country": "CH",
         "language": "de",
         "newsletter": true,
-        "email": "max.mueller@example.ch"
+        "email": "hans.schmidt@example.com"
       },
       "payment": {
         "transaction_id": "250905134230553498",
@@ -214,8 +214,8 @@ The following payment method codes are supported (see [Datatrans documentation](
       "purpose": null,
       "donor": {
         "gender": "male",
-        "first_name": "Peter",
-        "last_name": "Schmidt",
+        "first_name": "Thomas",
+        "last_name": "Weber",
         "street": "Musterstrasse",
         "street_number": "42",
         "po_box": "Postfach 1234",
@@ -224,7 +224,7 @@ The following payment method codes are supported (see [Datatrans documentation](
         "country": "CH",
         "language": "fr",
         "newsletter": false,
-        "email": "peter.schmidt@company.ch"
+        "email": "thomas.weber@example.com"
       },
       "payment": {
         "transaction_id": "qr_invoice_EDxGErZgdMJkuAjrVjKw",

@@ -28,54 +28,54 @@ The `data` object contains the order information:
 
 The `shop_order` object contains detailed information about the completed order:
 
-| Field              | Type   | Required | Description                                   |
-| ------------------ | ------ | -------- | --------------------------------------------- |
-| `id`               | string | Yes      | Order number (unique order identifier)        |
-| `created_at`       | string | Yes      | ISO 8601 timestamp when the order was created |
-| `customer`         | object | Yes      | Customer information                          |
-| `items`            | array  | Yes      | Array of ordered items                        |
-| `delivery_address` | object | Yes      | Delivery address information                  |
-| `invoice_address`  | object | Yes      | Invoice address information                   |
-| `currency`         | string | Yes      | ISO 4217 currency code (3 uppercase letters)  |
-| `total_price_net`   | number | Yes      | Total price without tax                       |
+| Field               | Type   | Required | Description                                   |
+| ------------------- | ------ | -------- | --------------------------------------------- |
+| `id`                | string | Yes      | Order number (unique order identifier)        |
+| `created_at`        | string | Yes      | ISO 8601 timestamp when the order was created |
+| `customer`          | object | Yes      | Customer information                          |
+| `items`             | array  | Yes      | Array of ordered items                        |
+| `delivery_address`  | object | Yes      | Delivery address information                  |
+| `invoice_address`   | object | Yes      | Invoice address information                   |
+| `currency`          | string | Yes      | ISO 4217 currency code (3 uppercase letters)  |
+| `total_price_net`   | number | Yes      | Total price without tax and shipping          |
 | `total_discount`    | number | Yes      | Total discount amount applied to order        |
 | `total_vat`         | number | Yes      | Total VAT/tax amount                          |
 | `total_price_gross` | number | Yes      | Final total including tax and shipping        |
-| `payment`          | object | Yes      | Payment information                           |
-| `shipping`         | object | Yes      | Shipping information                          |
+| `payment`           | object | Yes      | Payment information                           |
+| `shipping`          | object | Yes      | Shipping information                          |
 
 ### Customer Information
 
-| Field           | Type         | Required | Description                                                                  |
-| --------------- | ------------ | -------- | ---------------------------------------------------------------------------- |
-| `gender`        | string       | No       | Gender (`male`, `female`, `non-binary`, `prefer-not-to-say`)                 |
-| `first_name`    | string       | No       | First name                                                                   |
-| `last_name`     | string       | No       | Last name                                                                    |
-| `email`         | string       | Yes      | Customer email address (valid email format)                                  |
-| `phone`         | string/null  | No       | Customer phone number                                                        |
-| `company`       | string       | No       | Company name                                                                 |
-| `department`    | string       | No       | Department                                                                   |
-| `care_of`       | string       | No       | Care of / attention to (z.Hd.)                                               |
-| `po_box`        | string       | No       | PO Box                                                                       |
-| `street`        | string       | Yes      | Street name                                                                  |
-| `street_number` | string       | Yes      | Street number                                                                |
-| `postal_code`   | string       | Yes      | Postal code                                                                  |
-| `city`          | string       | Yes      | City                                                                         |
-| `country`       | string       | Yes      | ISO 3166-1 alpha-2 country code (2 uppercase letters)                        |
-| `language`      | string       | Yes      | Customer's preferred language (ISO 639-1 language code, 2 lowercase letters) |
+| Field           | Type        | Required | Description                                                                  |
+| --------------- | ----------- | -------- | ---------------------------------------------------------------------------- |
+| `gender`        | string      | No       | Gender (`male`, `female`, `non-binary`, `prefer-not-to-say`)                 |
+| `first_name`    | string      | No       | First name                                                                   |
+| `last_name`     | string      | No       | Last name                                                                    |
+| `email`         | string      | Yes      | Customer email address (valid email format)                                  |
+| `phone`         | string/null | No       | Customer phone number                                                        |
+| `company`       | string      | No       | Company name                                                                 |
+| `department`    | string      | No       | Department                                                                   |
+| `care_of`       | string      | No       | Care of / attention to (z.Hd.)                                               |
+| `po_box`        | string      | No       | PO Box                                                                       |
+| `street`        | string      | Yes      | Street name                                                                  |
+| `street_number` | string      | Yes      | Street number                                                                |
+| `postal_code`   | string      | Yes      | Postal code                                                                  |
+| `city`          | string      | Yes      | City                                                                         |
+| `country`       | string      | Yes      | ISO 3166-1 alpha-2 country code (2 uppercase letters)                        |
+| `language`      | string      | Yes      | Customer's preferred language (ISO 639-1 language code, 2 lowercase letters) |
 
 ### Item Information
 
 Each item in the `items` array contains:
 
-| Field                 | Type    | Required | Description                                          |
-| --------------------- | ------- | -------- | ---------------------------------------------------- |
-| `article_number`      | string  | Yes      | Article number                                       |
-| `quantity`            | integer | Yes      | Quantity ordered (minimum 1)                         |
-| `unit_price_net`      | number  | Yes      | Unit price without tax                               |
-| `unit_price_gross`    | number  | Yes      | Unit price including tax                             |
-| `total_price_gross`   | number  | Yes      | Total price for this item including tax              |
-| `discount_percentage` | number  | No       | Discount percentage applied to this item             |
+| Field                 | Type    | Required | Description                              |
+| --------------------- | ------- | -------- | ---------------------------------------- |
+| `article_number`      | string  | Yes      | Article number                           |
+| `quantity`            | integer | Yes      | Quantity ordered (minimum 1)             |
+| `unit_price_net`      | number  | Yes      | Unit price without tax                   |
+| `unit_price_gross`    | number  | Yes      | Unit price including tax                 |
+| `total_price_gross`   | number  | Yes      | Total price for this item including tax  |
+| `discount_percentage` | number  | No       | Discount percentage applied to this item |
 
 ### Address Information
 
@@ -97,11 +97,11 @@ Both `delivery_address` and `invoice_address` have the same structure:
 
 ### Payment Information
 
-| Field            | Type   | Required | Description                             |
-| ---------------- | ------ | -------- | --------------------------------------- |
+| Field            | Type   | Required | Description                              |
+| ---------------- | ------ | -------- | ---------------------------------------- |
 | `transaction_id` | string | Yes      | Payment processor transaction identifier |
-| `method`         | string | Yes      | Payment method used                     |
-| `status`         | string | Yes      | Payment status                          |
+| `method`         | string | Yes      | Payment method used                      |
+| `status`         | string | Yes      | Payment status                           |
 
 #### Payment Methods
 
@@ -159,8 +159,8 @@ The following payment method codes are supported (see [Datatrans documentation](
         "phone": null,
         "language": "fr",
         "gender": "female",
-        "first_name": "Myriam",
-        "last_name": "Udry",
+        "first_name": "Anna",
+        "last_name": "Mueller",
         "company": "",
         "care_of": "",
         "department": "",
@@ -190,8 +190,8 @@ The following payment method codes are supported (see [Datatrans documentation](
         }
       ],
       "delivery_address": {
-        "first_name": "Myriam",
-        "last_name": "Udry",
+        "first_name": "Anna",
+        "last_name": "Mueller",
         "company": "",
         "department": "",
         "care_of": "",
@@ -252,7 +252,7 @@ The following payment method codes are supported (see [Datatrans documentation](
         "language": "de",
         "first_name": "",
         "last_name": "",
-        "company": "Sanela Zeba",
+        "company": "Beispiel AG",
         "care_of": "",
         "department": "",
         "street": "Büntstrasse",
@@ -275,7 +275,7 @@ The following payment method codes are supported (see [Datatrans documentation](
       "delivery_address": {
         "first_name": "",
         "last_name": "",
-        "company": "Sanela Zeba",
+        "company": "Beispiel AG",
         "department": "",
         "care_of": "",
         "po_box": "",
@@ -288,7 +288,7 @@ The following payment method codes are supported (see [Datatrans documentation](
       "invoice_address": {
         "first_name": "",
         "last_name": "",
-        "company": "Sanela Zeba",
+        "company": "Beispiel AG",
         "department": "",
         "care_of": "",
         "po_box": "",
@@ -338,13 +338,13 @@ total_price_gross = total_price_net - total_discount + total_vat + shipping.cost
 
 ### Financial Fields
 
-| Field               | Description                                          | Example |
-| ------------------- | ---------------------------------------------------- | ------- |
-| `total_price_net`   | Total price without tax                              | 52.63   |
-| `total_discount`    | Total discount amount applied to order               | 11.65   |
-| `total_vat`         | Total VAT/tax amount                                 | 13.27   |
-| `total_price_gross` | Final total including tax and shipping               | 65.90   |
-| `shipping.cost`     | Shipping cost (included in total_price_gross)        | 9.00    |
+| Field               | Description                                   | Example |
+| ------------------- | --------------------------------------------- | ------- |
+| `shipping.cost`     | Shipping cost (included in total_price_gross) | 9.00    |
+| `total_price_net`   | Total price without tax and shipping          | 52.63   |
+| `total_discount`    | Total discount amount applied to order        | 11.65   |
+| `total_vat`         | Total VAT/tax amount                          | 13.27   |
+| `total_price_gross` | Final total including tax and shipping        | 65.90   |
 
 ### Calculation Example
 

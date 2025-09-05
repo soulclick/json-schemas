@@ -13,7 +13,7 @@
         "language": "de",
         "first_name": "",
         "last_name": "",
-        "company": "Sanela Zeba",
+        "company": "Beispiel AG",
         "care_of": "",
         "department": "",
         "street": "Büntstrasse",
@@ -34,7 +34,7 @@
         }
       ],
       "delivery_address": {
-        "company": "Sanela Zeba",
+        "company": "Beispiel AG",
         "care_of": "",
         "department": "",
         "street": "Büntstrasse",
@@ -45,7 +45,7 @@
         "country": "CH"
       },
       "invoice_address": {
-        "company": "Sanela Zeba",
+        "company": "Beispiel AG",
         "care_of": "",
         "department": "",
         "street": "Büntstrasse",
