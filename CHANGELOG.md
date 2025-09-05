@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added shop_order.completed webhook schema with support for both registered users and guest customers
 - Added `amount_discount` field to shop order schema for discount transparency
 - Added comprehensive pricing calculation documentation with formula and examples
+- Added `newsletter` field to donor object to indicate newsletter opt-in status
+- Added `transaction_id` field to payment object for payment processor transaction tracking
 
 ### Changed
 
@@ -42,9 +44,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Flattened shipping structure: replaced nested `shipment` object with flat `shipping_method` and `shipping_cost` fields
 - Reordered order fields for logical flow: metadata → customer → items → addresses → financial summary → transaction details
 - Updated shop order payment object to match donation schema with required `status` field
-- Removed `payment.transaction_id` field from shop order schema
+- Removed `payment.transaction_id` field from shop order schema (later re-added to donation schema)
 - Made address fields properly required: `street`, `street_number`, `postal_code`, `city`, `country`
 - Added `amount_subtotal` field to order for financial transparency
+- Updated payment methods to use Datatrans codes (TWI, PAY, PFC, PEF, VIS, ECA, APL, PAP, INV, AMX, ALP, AZP, CFY, KLN, DIB, PSC, REK, SAM, ELV)
+- Changed donation ID from integer to string for better compatibility
+- Made donation `purpose` field optional (can be null)
 
 ### Removed
 

@@ -5,7 +5,7 @@
   "environment": "prod",
   "data": {
     "donation": {
-      "id": 188,
+      "id": "188",
       "created_at": "2025-08-25T10:30:00Z",
       "amount": 51.05,
       "currency": "CHF",
@@ -24,10 +24,12 @@
         "postal_code": "3005",
         "country": "CH",
         "language": "de",
+        "newsletter": false,
         "email": "janadockter@web.de"
       },
       "payment": {
-        "method": "twint",
+        "transaction_id": "twi_123456789",
+        "method": "TWI",
         "status": "completed"
       },
       "invoice": null

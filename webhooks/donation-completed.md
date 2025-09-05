@@ -30,12 +30,12 @@ The `donation` object contains detailed information about the completed donation
 
 | Field        | Type    | Required | Description                                      |
 | ------------ | ------- | -------- | ------------------------------------------------ |
-| `id`         | integer | Yes      | Unique donation identifier                       |
+| `id`         | string  | Yes      | Unique donation identifier                       |
 | `created_at` | string  | Yes      | ISO 8601 timestamp when the donation was created |
 | `amount`     | number  | Yes      | Donation amount (minimum 0, multiple of 0.01)    |
 | `currency`   | string  | Yes      | ISO 4217 currency code (3 uppercase letters)     |
 | `campaign`   | object  | Yes      | Campaign information (id and German title)       |
-| `purpose`    | string  | Yes      | Donation purpose or category                     |
+| `purpose`    | string  | No       | Donation purpose or category                     |
 | `donor`      | object  | Yes      | Donor information                                |
 | `payment`    | object  | Yes      | Payment information                              |
 | `invoice`    | string  | No       | Invoice number (null for non-invoice payments)   |
@@ -60,28 +60,44 @@ The `campaign` object contains:
 | `street_number` | string | Yes      | Street number                                                             |
 | `city`          | string | Yes      | City                                                                      |
 | `postal_code`   | string | Yes      | Postal code                                                               |
-| `country`       | string | Yes      | ISO 3166-1 alpha-2 country code (2 uppercase letters)                     |
-| `language`      | string | Yes      | Donor's preferred language (ISO 639-1 language code, 2 lowercase letters) |
-| `gender`        | string | No       | Donor gender (`male`, `female`, `non-binary`, `prefer-not-to-say`)        |
-| `company`       | string | No       | Company name                                                              |
-| `po_box`        | string | No       | PO Box                                                                    |
+| `country`       | string  | Yes      | ISO 3166-1 alpha-2 country code (2 uppercase letters)                     |
+| `language`      | string  | Yes      | Donor's preferred language (ISO 639-1 language code, 2 lowercase letters) |
+| `newsletter`    | boolean | No       | Whether the donor opted in for the newsletter                              |
+| `gender`        | string  | No       | Donor gender (`male`, `female`, `non-binary`, `prefer-not-to-say`)        |
+| `company`       | string  | No       | Company name                                                              |
+| `po_box`        | string  | No       | PO Box                                                                    |
 
 ### Payment Information
 
-| Field    | Type   | Required | Description         |
-| -------- | ------ | -------- | ------------------- |
-| `method` | string | Yes      | Payment method used |
-| `status` | string | Yes      | Payment status      |
+| Field            | Type   | Required | Description                             |
+| ---------------- | ------ | -------- | --------------------------------------- |
+| `transaction_id` | string | Yes      | Payment processor transaction identifier |
+| `method`         | string | Yes      | Payment method used                     |
+| `status`         | string | Yes      | Payment status                          |
 
 #### Payment Methods
 
-The following payment methods are supported:
+The following payment method codes are supported (see [Datatrans documentation](https://docs.datatrans.ch/docs/payment-methods)):
 
-- `twint` - TWINT mobile payment
-- `visa` - Visa credit card
-- `mastercard` - Mastercard credit card
-- `postfinance` - PostFinance payment
-- `invoice` - Invoice payment
+- `TWI` - TWINT mobile payment
+- `PAY` - Google Pay
+- `PFC` - PostFinance Card
+- `PEF` - PostFinance E-Finance
+- `VIS` - Visa credit card
+- `ECA` - MasterCard
+- `APL` - Apple Pay
+- `PAP` - PayPal
+- `INV` - Invoice payment
+- `AMX` - American Express
+- `ALP` - Alipay+
+- `AZP` - Amazon Pay
+- `CFY` - Cofidis Pay
+- `KLN` - Klarna
+- `DIB` - Diners Club
+- `PSC` - Paysafecard
+- `REK` - Reka
+- `SAM` - Samsung Pay
+- `ELV` - SEPA
 
 #### Payment Status
 
@@ -101,7 +117,7 @@ The following payment methods are supported:
   "environment": "prod",
   "data": {
     "donation": {
-      "id": 188,
+      "id": "188",
       "created_at": "2025-08-25T10:30:00Z",
       "amount": 51.05,
       "currency": "CHF",
@@ -120,10 +136,12 @@ The following payment methods are supported:
         "postal_code": "3005",
         "country": "CH",
         "language": "de",
+        "newsletter": false,
         "email": "janadockter@web.de"
       },
       "payment": {
-        "method": "twint",
+        "transaction_id": "twi_123456789",
+        "method": "TWI",
         "status": "completed"
       },
       "invoice": null
@@ -142,7 +160,7 @@ The following payment methods are supported:
   "environment": "prod",
   "data": {
     "donation": {
-      "id": 189,
+      "id": "189",
       "created_at": "2025-08-27T09:45:00Z",
       "amount": 100.0,
       "currency": "CHF",
@@ -161,10 +179,12 @@ The following payment methods are supported:
         "postal_code": "8001",
         "country": "CH",
         "language": "de",
+        "newsletter": true,
         "email": "max.mueller@example.ch"
       },
       "payment": {
-        "method": "visa",
+        "transaction_id": "250905134230553498",
+        "method": "VIS",
         "status": "completed"
       },
       "invoice": null
@@ -183,7 +203,7 @@ The following payment methods are supported:
   "environment": "prod",
   "data": {
     "donation": {
-      "id": 190,
+      "id": "190",
       "created_at": "2025-08-27T08:20:00Z",
       "amount": 250.0,
       "currency": "CHF",
@@ -191,7 +211,7 @@ The following payment methods are supported:
         "id": 789,
         "title": "Bildung für alle"
       },
-      "purpose": "Bildungsprojekt",
+      "purpose": null,
       "donor": {
         "gender": "male",
         "first_name": "Peter",
@@ -203,10 +223,12 @@ The following payment methods are supported:
         "postal_code": "4000",
         "country": "CH",
         "language": "fr",
+        "newsletter": false,
         "email": "peter.schmidt@company.ch"
       },
       "payment": {
-        "method": "invoice",
+        "transaction_id": "qr_invoice_EDxGErZgdMJkuAjrVjKw",
+        "method": "INV",
         "status": "pending"
       },
       "invoice": "INV-2025-001190"

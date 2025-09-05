@@ -5,7 +5,7 @@
   "environment": "prod",
   "data": {
     "donation": {
-      "id": 189,
+      "id": "189",
       "created_at": "2025-08-27T09:45:00Z",
       "amount": 100.0,
       "currency": "CHF",
@@ -24,10 +24,12 @@
         "postal_code": "8001",
         "country": "CH",
         "language": "de",
+        "newsletter": true,
         "email": "max.mueller@example.ch"
       },
       "payment": {
-        "method": "visa",
+        "transaction_id": "250905134230553498",
+        "method": "VIS",
         "status": "completed"
       },
       "invoice": null

@@ -36,13 +36,12 @@
             "amount",
             "currency",
             "campaign",
-            "purpose",
             "donor",
             "payment"
           ],
           "properties": {
             "id": {
-              "type": "integer",
+              "type": "string",
               "description": "Unique donation identifier"
             },
             "created_at": {
@@ -77,7 +76,7 @@
               "description": "Campaign information"
             },
             "purpose": {
-              "type": "string",
+              "type": ["string", "null"],
               "description": "Donation purpose or category"
             },
             "donor": {
@@ -147,23 +146,45 @@
                   "type": "string",
                   "pattern": "^[a-z]{2}$",
                   "description": "Donor's preferred language (ISO 639-1 language code)"
+                },
+                "newsletter": {
+                  "type": "boolean",
+                  "description": "Whether the donor opted in for the newsletter"
                 }
               }
             },
             "payment": {
               "type": "object",
-              "required": ["method", "status"],
+              "required": ["transaction_id", "method", "status"],
               "properties": {
+                "transaction_id": {
+                  "type": "string",
+                  "description": "Payment processor transaction identifier"
+                },
                 "method": {
                   "type": "string",
                   "enum": [
-                    "twint",
-                    "visa",
-                    "mastercard",
-                    "postfinance",
-                    "invoice"
+                    "TWI",
+                    "PAY",
+                    "PFC",
+                    "PEF",
+                    "VIS",
+                    "ECA",
+                    "APL",
+                    "PAP",
+                    "INV",
+                    "AMX",
+                    "ALP",
+                    "AZP",
+                    "CFY",
+                    "KLN",
+                    "DIB",
+                    "PSC",
+                    "REK",
+                    "SAM",
+                    "ELV"
                   ],
-                  "description": "Payment method used"
+                  "description": "Payment method code (see https://docs.datatrans.ch/docs/payment-methods)"
                 },
                 "status": {
                   "type": "string",
