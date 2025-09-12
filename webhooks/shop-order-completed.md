@@ -67,14 +67,16 @@ The `shop_order` object contains detailed information about the completed order:
 
 Each item in the `items` array contains:
 
-| Field                 | Type    | Required | Description                              |
-| --------------------- | ------- | -------- | ---------------------------------------- |
-| `article_number`      | string  | Yes      | Article number                           |
-| `quantity`            | integer | Yes      | Quantity ordered (minimum 1)             |
-| `unit_price_net`      | number  | Yes      | Unit price without tax                   |
-| `unit_price_gross`    | number  | Yes      | Unit price including tax                 |
-| `total_price_gross`   | number  | Yes      | Total price for this item including tax  |
-| `discount_percentage` | number  | No       | Discount percentage applied to this item |
+| Field                       | Type    | Required | Description                                       |
+| --------------------------- | ------- | -------- | ------------------------------------------------- |
+| `article_number`            | string  | Yes      | Article number                                    |
+| `quantity`                  | integer | Yes      | Quantity ordered (minimum 1)                      |
+| `unit_price_net`            | number  | Yes      | Unit price without tax                            |
+| `unit_price_gross`          | number  | Yes      | Unit price including tax                          |
+| `original_unit_price_net`   | number  | No       | Original unit price without tax before discount   |
+| `original_unit_price_gross` | number  | No       | Original unit price including tax before discount |
+| `total_price_gross`         | number  | Yes      | Total price for this item including tax           |
+| `discount_percentage`       | number  | No       | Discount percentage applied to this item          |
 
 ### Address Information
 
@@ -134,10 +136,11 @@ The following payment method codes are supported (see [Datatrans documentation](
 
 ### Shipping Information
 
-| Field    | Type   | Required | Description     |
-| -------- | ------ | -------- | --------------- |
-| `cost`   | number | Yes      | Shipping cost   |
-| `method` | string | Yes      | Shipping method |
+| Field    | Type    | Required | Description         |
+| -------- | ------- | -------- | ------------------- |
+| `id`     | integer | No       | Shipping identifier |
+| `cost`   | number  | Yes      | Shipping cost       |
+| `method` | string  | Yes      | Shipping method     |
 
 ## Example Payloads
 
@@ -176,6 +179,8 @@ The following payment method codes are supported (see [Datatrans documentation](
           "quantity": 12,
           "unit_price_net": 0.0,
           "unit_price_gross": 0.0,
+          "original_unit_price_net": 0.0,
+          "original_unit_price_gross": 0.0,
           "discount_percentage": 0,
           "total_price_gross": 0.0
         },
@@ -184,6 +189,8 @@ The following payment method codes are supported (see [Datatrans documentation](
           "quantity": 12,
           "unit_price_net": 4.63,
           "unit_price_gross": 5.0,
+          "original_unit_price_net": 4.63,
+          "original_unit_price_gross": 5.0,
           "discount_percentage": 0,
           "total_price_gross": 60.0
         }
@@ -224,6 +231,7 @@ The following payment method codes are supported (see [Datatrans documentation](
         "status": "completed"
       },
       "shipping": {
+        "id": 1001,
         "cost": 12.0,
         "method": "Service-Pauschale B-Post Paket"
       }
@@ -266,6 +274,8 @@ The following payment method codes are supported (see [Datatrans documentation](
           "quantity": 1,
           "unit_price_net": 0.0,
           "unit_price_gross": 0.0,
+          "original_unit_price_net": 0.0,
+          "original_unit_price_gross": 0.0,
           "discount_percentage": 0,
           "total_price_gross": 0.0
         }
@@ -306,6 +316,7 @@ The following payment method codes are supported (see [Datatrans documentation](
         "status": "pending"
       },
       "shipping": {
+        "id": 1004,
         "cost": 0.0,
         "method": "Service-Pauschale B-Post Paket"
       }

@@ -30,16 +30,20 @@
           "quantity": 1,
           "unit_price_net": 27.69,
           "unit_price_gross": 29.9,
+          "original_unit_price_net": 27.69,
+          "original_unit_price_gross": 29.9,
           "total_price_gross": 29.9,
           "discount_percentage": 0
         },
         {
           "article_number": "4789",
           "quantity": 2,
-          "unit_price_net": 14.35,
-          "unit_price_gross": 15.5,
-          "total_price_gross": 31.0,
-          "discount_percentage": 0
+          "unit_price_net": 13.01,
+          "unit_price_gross": 14.05,
+          "original_unit_price_net": 14.35,
+          "original_unit_price_gross": 15.5,
+          "total_price_gross": 28.1,
+          "discount_percentage": 9.35
         }
       ],
       "delivery_address": {
@@ -71,15 +75,16 @@
         "country": "CH"
       },
       "currency": "CHF",
-      "total_discount": 0.0,
-      "total_vat": 4.51,
-      "total_price_gross": 68.9,
+      "total_discount": 2.9,
+      "total_vat": 4.28,
+      "total_price_gross": 66.0,
       "payment": {
         "transaction_id": "vis_2708202500003",
         "method": "VIS",
         "status": "completed"
       },
       "shipping": {
+        "id": 1003,
         "cost": 8.0,
         "method": "Standard Versand"
       }

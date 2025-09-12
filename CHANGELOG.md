@@ -22,6 +22,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added full address fields to shop order customer object
 - Added `phone` field to shop order customer object
 - Added `discount_percentage` field to shop order items
+- Added `original_unit_price_net` field to shop order items for tracking original prices before discounts
+- Added `original_unit_price_gross` field to shop order items for tracking original prices before discounts
+- Added `id` field to shop order shipping object for shipping identifier
 
 ### Changed
 
