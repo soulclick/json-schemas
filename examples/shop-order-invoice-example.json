@@ -8,6 +8,7 @@
       "id": "2708202500002",
       "created_at": "2025-08-27T16:37:20Z",
       "customer": {
+        "id": 11111,
         "email": "sanela.zeba@kath-berneck.ch",
         "phone": null,
         "language": "de",
@@ -36,6 +37,7 @@
         }
       ],
       "delivery_address": {
+        "id": 2004,
         "company": "Beispiel AG",
         "care_of": "",
         "department": "",
@@ -47,6 +49,7 @@
         "country": "CH"
       },
       "invoice_address": {
+        "id": 3004,
         "company": "Beispiel AG",
         "care_of": "",
         "department": "",

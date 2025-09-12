@@ -25,6 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `original_unit_price_net` field to shop order items for tracking original prices before discounts
 - Added `original_unit_price_gross` field to shop order items for tracking original prices before discounts
 - Added `id` field to shop order shipping object for shipping identifier
+- Added `id` field to shop order customer object for customer identifier
+- Added `id` field to shop order delivery_address object for address identifier
+- Added `id` field to shop order invoice_address object for address identifier
 
 ### Changed
 

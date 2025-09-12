@@ -47,6 +47,7 @@ The `shop_order` object contains detailed information about the completed order:
 
 | Field           | Type        | Required | Description                                                                  |
 | --------------- | ----------- | -------- | ---------------------------------------------------------------------------- |
+| `id`            | integer     | No       | Customer identifier                                                          |
 | `gender`        | string      | No       | Gender (`male`, `female`, `non-binary`, `prefer-not-to-say`)                 |
 | `first_name`    | string      | No       | First name                                                                   |
 | `last_name`     | string      | No       | Last name                                                                    |
@@ -82,9 +83,10 @@ Each item in the `items` array contains:
 
 Both `delivery_address` and `invoice_address` have the same structure:
 
-| Field           | Type   | Required | Description                                           |
-| --------------- | ------ | -------- | ----------------------------------------------------- |
-| `first_name`    | string | No       | First name                                            |
+| Field           | Type    | Required | Description                                           |
+| --------------- | ------- | -------- | ----------------------------------------------------- |
+| `id`            | integer | No       | Address identifier                                    |
+| `first_name`    | string  | No       | First name                                            |
 | `last_name`     | string | No       | Last name                                             |
 | `company`       | string | No       | Company name                                          |
 | `department`    | string | No       | Department                                            |
@@ -157,6 +159,7 @@ The following payment method codes are supported (see [Datatrans documentation](
       "id": "2708202500000",
       "created_at": "2025-08-27T13:17:47Z",
       "customer": {
+        "id": 12345,
         "email": "myriam.udry@gmail.com",
         "phone": null,
         "language": "fr",
@@ -196,6 +199,7 @@ The following payment method codes are supported (see [Datatrans documentation](
         }
       ],
       "delivery_address": {
+        "id": 2001,
         "first_name": "Anna",
         "last_name": "Mueller",
         "company": "",
@@ -209,6 +213,7 @@ The following payment method codes are supported (see [Datatrans documentation](
         "country": "CH"
       },
       "invoice_address": {
+        "id": 3001,
         "first_name": "",
         "last_name": "",
         "company": "",
@@ -253,6 +258,7 @@ The following payment method codes are supported (see [Datatrans documentation](
       "id": "2708202500002",
       "created_at": "2025-08-27T16:37:20Z",
       "customer": {
+        "id": 11111,
         "email": "sanela.zeba@kath-berneck.ch",
         "phone": null,
         "language": "de",
@@ -281,6 +287,7 @@ The following payment method codes are supported (see [Datatrans documentation](
         }
       ],
       "delivery_address": {
+        "id": 2004,
         "first_name": "",
         "last_name": "",
         "company": "Beispiel AG",
@@ -294,6 +301,7 @@ The following payment method codes are supported (see [Datatrans documentation](
         "country": "CH"
       },
       "invoice_address": {
+        "id": 3004,
         "first_name": "",
         "last_name": "",
         "company": "Beispiel AG",

@@ -66,6 +66,10 @@
                 "country"
               ],
               "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "Customer identifier"
+                },
                 "gender": {
                   "type": "string",
                   "enum": ["male", "female", "non-binary", "prefer-not-to-say"],
@@ -203,6 +207,10 @@
                 "country"
               ],
               "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "Delivery address identifier"
+                },
                 "first_name": {
                   "type": "string",
                   "description": "First name"
@@ -260,6 +268,10 @@
                 "country"
               ],
               "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "Invoice address identifier"
+                },
                 "first_name": {
                   "type": "string",
                   "description": "First name"
@@ -406,6 +418,7 @@
           "id": "2708202500000",
           "created_at": "2025-08-27T13:17:47Z",
           "customer": {
+            "id": 12345,
             "type": "guest",
             "email": "myriam.udry@gmail.com",
             "language": "fr"
@@ -437,6 +450,7 @@
             }
           ],
           "delivery_address": {
+            "id": 2001,
             "gender": "female",
             "first_name": "Myriam",
             "last_name": "Udry",
@@ -450,6 +464,7 @@
             "country": "CH"
           },
           "invoice_address": {
+            "id": 3001,
             "company": "Tech Solutions AG",
             "street": "Bahnhofstrasse",
             "street_number": "1",
@@ -484,6 +499,7 @@
           "id": "2708202500002",
           "created_at": "2025-08-27T16:37:20Z",
           "customer": {
+            "id": 67890,
             "type": "registered",
             "email": "sanela.zeba@kath-berneck.ch",
             "language": "de"
@@ -503,6 +519,7 @@
             }
           ],
           "delivery_address": {
+            "id": 2002,
             "gender": "female",
             "first_name": "",
             "last_name": "",
@@ -517,6 +534,7 @@
             "country": "CH"
           },
           "invoice_address": {
+            "id": 3002,
             "gender": "female",
             "first_name": "",
             "last_name": "",
